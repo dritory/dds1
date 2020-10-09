@@ -95,3 +95,7 @@ RSA_soc/RSA_soc/
 !*.elf
 !*.bmm
 !*.xmp
+
+######
+#Python
+!*.py
