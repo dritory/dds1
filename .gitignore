@@ -3,6 +3,7 @@
 RSA_accelerator/RSA_accelerator/
 RSA_accelerator/IP/
 Exponentiation/Exponentiation/
+Multiplier/Multiplier/
 RSA_soc/RSA_soc/
 
 .Xil
