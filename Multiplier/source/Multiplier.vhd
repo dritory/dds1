@@ -35,15 +35,19 @@ architecture behaviour of Multiplier is
 	signal mux2 : std_logic_vector (BUS_WIDTH - 1  downto 0);
 begin
 	
+	--Shift register for b_i, and counter for READY signal
 	b_reg : process(CLK, B, b_count)
 	begin
 		if rising_edge(CLK) then
+			--Increments b_i if counter is above 1
 			if b_count > 1 then
 				b_i <= B (b_count - 1);
 			else
 				b_i <= '0';
 			end if;
 			b_count <= b_count - 1;
+			
+			--Sends out READY signal when counter is done
 			if b_count <= 0 then
 				READY <= '1';
 				b_count <= BUS_WIDTH;
@@ -53,6 +57,7 @@ begin
 		end if;
 	end process ; -- b_reg
 
+	--Register for output value P
 	p_reg : process( CLK, P_nxt )
 	begin
 		if rising_edge(CLK) then
@@ -60,6 +65,7 @@ begin
 		end if;
 	end process ; -- p_reg
 	
+	--First adder and AND gate
 	adder0 : process(A, b_i, P_shift)
 	variable and_A : std_logic_vector (BUS_WIDTH - 1  downto 0);
 	begin
@@ -67,12 +73,14 @@ begin
 		sum0 <= "00" & (and_A + P_shift);
 	end process ; -- adder0
 	
+	--The two modulus subtractors
 	mod_adder : process(sum0, m2N, mN)
 	begin
 		sum1 <= sum0 + mN;
 		sum2 <= sum0 + m2N;
 	end process ; -- mod_adder
 
+	--Muliplexers for selecting correct sum
 	multiplexer1 : process(sum1)
 	begin
 		if sum1(BUS_WIDTH - 1 + 2) = '0' then
@@ -91,17 +99,12 @@ begin
 		end if;
 		
 	end process ; -- multiplexer2
-		
+	
+	--inputs the mux signal into the register
 	P_nxt <= mux2;
+	--Outputs the register to the P output
 	P <= P_out;
+	--Shifts P left by one and add 0, equivalent to multipying by two
 	P_shift <= P_out (BUS_WIDTH - 2 downto 0) & '0';
-
-
-
-
-
-
-
-
 
 end behaviour;
