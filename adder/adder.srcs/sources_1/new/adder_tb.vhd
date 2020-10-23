@@ -36,16 +36,25 @@ entity adder_tb is
 end adder_tb;
 
 architecture Behavioral of adder_tb is
+    constant BUS_WIDTH : integer := 10;
+    
     component adder
-    Port ( a : in STD_LOGIC_VECTOR (255 downto 0);
-           b : in STD_LOGIC_VECTOR (255 downto 0);
+    Generic (
+        BUS_WIDTH : integer := BUS_WIDTH-- Structure
+    );
+    Port ( a : in STD_LOGIC_VECTOR (BUS_WIDTH - 1 downto 0);
+           b : in STD_LOGIC_VECTOR (BUS_WIDTH - 1 downto 0);
            clk : in STD_LOGIC;
-           y : out STD_LOGIC_VECTOR (255 downto 0));
+           y : out STD_LOGIC_VECTOR (BUS_WIDTH -1 downto 0);
+           z : out std_logic
+        );
     end component;
 
-    signal a : STD_LOGIC_VECTOR (255 downto 0) := x"000000000000000000000000000000000000000000000000AAAABBBBCCCCDDDD";
-    signal b : STD_LOGIC_VECTOR (255 downto 0) := x"000000000000000000000000000000000000000000000000AAAABBBBCCCCDDDD";
-    signal y : STD_LOGIC_VECTOR (255 downto 0);
+    signal a : STD_LOGIC_VECTOR (BUS_WIDTH - 1 downto 0) := std_logic_vector(to_signed(255, BUS_WIDTH));
+    signal b : STD_LOGIC_VECTOR (BUS_WIDTH - 1 downto 0) := std_logic_vector(to_signed(-127, BUS_WIDTH));
+    signal y : STD_LOGIC_VECTOR (BUS_WIDTH - 1 downto 0);
+    signal y_out : STD_LOGIC_VECTOR (BUS_WIDTH - 3 downto 0);
+    signal z : STD_LOGIC;
     signal clk : STD_LOGIC := '0';
 
     constant clk_period : time := 50ns;
@@ -56,7 +65,8 @@ begin
         a => a,
         b => b,
         clk => clk,
-        y => y
+        y => y,
+        z => z
     );
 
     clk_process : process
@@ -68,10 +78,18 @@ begin
     end process;
     sim: process
     begin
-        wait for 100us;
-
-        wait for 100us;
-
+        wait for 100ns;
+        a <= std_logic_vector(to_signed(120, BUS_WIDTH));
+        wait for 100ns;
+        a <= std_logic_vector(to_signed(127, BUS_WIDTH));
+        wait for 100ns;
+        b <= std_logic_vector(to_signed(-255, BUS_WIDTH));
+        wait for 100ns;
+        a <= std_logic_vector(to_signed(255, BUS_WIDTH));
+        wait for 100ns;
+        b <= std_logic_vector(to_signed(-510, BUS_WIDTH));
+        wait for 100ns;
     end process;
-
+    
+    y_out <= y(BUS_WIDTH -3 downto 0);
 end Behavioral;

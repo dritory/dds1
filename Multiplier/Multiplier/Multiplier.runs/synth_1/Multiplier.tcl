@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "F:/Onedrive/NTNU/dds1/adder/adder.runs/synth_1/adder.tcl"
+  variable script "F:/Onedrive/NTNU/dds1/Multiplier/Multiplier/Multiplier.runs/synth_1/Multiplier.tcl"
   variable category "vivado_synth"
 }
 
@@ -71,6 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param synth.incrementalSynthesisCache C:/Users/lolsk/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-6740-DESKTOP-H16983N/incrSyn
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -79,19 +80,16 @@ create_project -in_memory -part xc7z020clg400-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir F:/Onedrive/NTNU/dds1/adder/adder.cache/wt [current_project]
-set_property parent.project_path F:/Onedrive/NTNU/dds1/adder/adder.xpr [current_project]
+set_property webtalk.parent_dir F:/Onedrive/NTNU/dds1/Multiplier/Multiplier/Multiplier.cache/wt [current_project]
+set_property parent.project_path F:/Onedrive/NTNU/dds1/Multiplier/Multiplier/Multiplier.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part www.digilentinc.com:pynq-z1:part0:1.0 [current_project]
-set_property ip_output_repo f:/Onedrive/NTNU/dds1/adder/adder.cache/ip [current_project]
+set_property ip_output_repo f:/Onedrive/NTNU/dds1/Multiplier/Multiplier/Multiplier.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib {
-  F:/Onedrive/NTNU/dds1/adder/adder.srcs/sources_1/new/adder.vhd
-  F:/Onedrive/NTNU/dds1/adder/adder.srcs/sources_1/new/adder_tb.vhd
-}
+read_vhdl -vhdl2008 -library xil_defaultlib F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -101,24 +99,24 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc F:/Onedrive/NTNU/dds1/adder/adder.srcs/constrs_1/new/contrain.xdc
-set_property used_in_implementation false [get_files F:/Onedrive/NTNU/dds1/adder/adder.srcs/constrs_1/new/contrain.xdc]
+read_xdc F:/Onedrive/NTNU/dds1/Master_constraints/PYNQ-Z1_C.xdc
+set_property used_in_implementation false [get_files F:/Onedrive/NTNU/dds1/Master_constraints/PYNQ-Z1_C.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top adder -part xc7z020clg400-1
+synth_design -top Multiplier -part xc7z020clg400-1
 OPTRACE "synth_design" END { }
 
 
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef adder.dcp
+write_checkpoint -force -noxdef Multiplier.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file adder_utilization_synth.rpt -pb adder_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file Multiplier_utilization_synth.rpt -pb Multiplier_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
