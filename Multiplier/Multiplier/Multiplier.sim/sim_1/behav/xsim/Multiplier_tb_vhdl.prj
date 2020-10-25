@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../source/Multiplier.vhd" \
+"../../../../../testbench/Multiplier.vhd" \
+
+# Do not sort compile order
+nosort

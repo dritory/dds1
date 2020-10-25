@@ -32,16 +32,21 @@ def parallel_binary_method(M, e, n):
     
 
 def blakleys_method(A ,B, n):
-    k = B.bit_length()
+    k = max(A.bit_length(),B.bit_length())
     P = 0
     for i in range(k, -1, -1):
-        P = 2*P + A * bit_at(B, i)
+        tP = 2*P
+        A_and_b = A * bit_at(B, i)
+        P = tP + A_and_b
+        sum0 = P
         #P = P % n
-        if( P >= n):
+        if(P - 2*n >= 0):
+            P = P - 2*n
+            print(P)
+        elif(P >= n):
             P = P - n
-        if( P >= n):
-            P = P - n
-            
+            print(P)
+        print("sum0:", sum0, "Pnxt:",P)
         if( P >= n):
             assert "mod n overflow!"
     return P
@@ -61,20 +66,20 @@ if __name__ == "__main__":
 
     print("### Blakley method test")
     ## Test Blakley
-    A = 0b11100101
-    B = 0b11011
-    n = 0b11011001000
+    A = 0b101110 # 46
+    B = 0b000010 #2
+    n = 0b111000 #56
     golden =( A * B) % n
     test = blakleys_method(A, B, n)
     print("G_blakley:", golden, "test_blakley: ", test) 
-    
+    exit()
     ## Test Binary + Blakley
 
     print("### Binary method test")
 
-    M = 0b101110
-    e = 0b101
-    n = 0b1110111
+    M = 0b101110 #46
+    e = 0b101 # 5
+    n = 0b1110111 # 119
     d = 0b1001101
     
     crypt = (binary_method(M, e, n))

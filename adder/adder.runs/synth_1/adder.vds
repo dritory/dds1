@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Fri Oct 23 09:54:10 2020
+# Process ID: 5432
+# Current directory: F:/Onedrive/NTNU/dds1/adder/adder.runs/synth_1
+# Command line: vivado.exe -log adder.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source adder.tcl
+# Log file: F:/Onedrive/NTNU/dds1/adder/adder.runs/synth_1/adder.vds
+# Journal file: F:/Onedrive/NTNU/dds1/adder/adder.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source adder.tcl -notrace
+Command: synth_design -top adder -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18216
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1012.316 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'adder' [F:/Onedrive/NTNU/dds1/adder/adder.srcs/sources_1/new/adder.vhd:51]
+ERROR: [Synth 8-78] a value must be associated with generic BUS_WIDTH [F:/Onedrive/NTNU/dds1/adder/adder.srcs/sources_1/new/adder.vhd:40]
+ERROR: [Synth 8-285] failed synthesizing module 'adder' [F:/Onedrive/NTNU/dds1/adder/adder.srcs/sources_1/new/adder.vhd:51]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1012.316 ; gain = 0.000
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+7 Infos, 0 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 23 09:54:24 2020...
