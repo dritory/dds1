@@ -65,26 +65,131 @@ entity rsa_core is
 	);
 end rsa_core;
 
-architecture rtl of rsa_core is
+architecture behaviour of rsa_core is
+	signal P0_nxt : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal P0_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal P1_nxt : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal P1_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal c0_nxt : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal c0_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal c1_nxt : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal c1_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal mux1_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal mux2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
+	signal mux3_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 
+	signal e_i : std_logic := '0';
+	signal e_count : integer := C_BLOCK_SIZE;
 begin
-	i_exponentiation : entity work.exponentiation
-		generic map (
-			C_block_size => C_BLOCK_SIZE
-		)
-		port map (
-			message   => msgin_data  ,
-			key       => key_e_d     ,
-			valid_in  => msgin_valid ,
-			ready_in  => msgin_ready ,
-			ready_out => msgout_ready,
-			valid_out => msgout_valid,
-			result    => msgout_data ,
-			modulus   => key_n       ,
-			clk       => clk         ,
-			reset_n   => reset_n
-		);
 
-	msgout_last  <= msgin_last;
-	rsa_status   <= (others => '0');
-end rtl;
+
+	--Shift register for e_i, and counter for msgout_ready signal
+	e_reg : process(clk, key_e_d, e_count, c1_ready)
+	begin
+		if rising_edge(CLK)  then
+			--Increments e_i if counter is above 1
+			if e_count > 1 then
+				e_i <= key_e_d (e_count - 1);
+			else
+				e_i <= '0';
+			end if;
+			e_count <= e_count - 1;
+			
+			--Sends out msgout_ready signal when counter is done
+			if e_count <= 0  then
+				msgout_ready <= '1';
+				e_count <= C_BLOCK_SIZE;
+			else
+				msgout_ready <= '0';
+			end if;
+		end if;
+	end process ; 
+
+-- exponentiation loop
+
+	-- multiplexer for M and sum1 from p1 register.  
+	mux1 : process(msgin_data, sum1, msgin_last)
+	begin	
+		if rising_edge(clk) then
+			if msgin_last = '0' then
+				mux1_out <= sum1 (C_BLOCK_SIZE -1 downto 0);
+			else
+				mux1_out <= msgin_data (C_BLOCK_SIZE -1 downto 0);
+			end if;
+		end if;	
+		
+	end process;
+
+	-- register P0 storing muxed value
+	p0_reg : process(clk, P0_nxt)
+	begin	
+		if rising_edge(clk) then
+			P0_out <= P0_nxt;
+		end if;
+	end process;
+
+	-- multiplier using p0_reg out value
+
+
+	-- register storing result from multiplier step
+	p1_reg : process(clk, p1_nxt)
+	begin
+		if rising_edge(clk) then
+			P1_out <= P1_nxt;
+		end if;
+	end process;
+
+
+-- multiplier loop
+
+
+	-- multiplexer for 1(1st step) and feedpack loop
+	mux2 : process(sum2, msgin_last)
+	begin
+			if msgin_last = '0' then
+				mux2_out <= sum2 (C_BLOCK_SIZE -1 downto 0);
+			else
+				mux2_out <= '0' (C_BLOCK_SIZE -2 downto 0) & '1';
+			end if;  
+	end process;
+
+	-- register c0 storing muxed value
+	c0_reg : process(clk, c0_nxt)
+	begin
+		if rising_edge(clk) then
+			c0_out <= c0_nxt;
+		end if;
+	end process;
+
+	-- multiplier adding exponents to output
+
+
+	-- using mux to use or discard result from multiplier
+	mux3 : process(multi2_out, c0_out, e_i)
+	begin
+		if e_i = '0' then
+			mux3_out <= c0_out;
+		else 
+			mux3_out <= multi2_out;
+		end if ;
+	end process;
+
+	-- register c1 storing value from mux3
+	c1_reg : process(clk, c1_nxt)
+	begin
+		if rising_edge(clk) then
+			c1_out <= c1_nxt;
+		end if;
+	end process;
+
+-- connecting processes
+	-- inputs mux1 signal into register p0
+	P0_nxt <= mux1_out;
+
+	--multi1_A <= P0_out;
+	--multi1_B <= P0_out;
+	--multi
+
+-- send relevant data to the msg_out interface. 
+
+end behaviour;
