@@ -19,10 +19,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use IEEE.STD_LOGIC_SIGNED.ALL;
+
 entity rsa_core is
 	generic (
 		-- Users to add parameters here
-		C_BLOCK_SIZE          : integer := 256
+		C_BLOCK_SIZE          : integer := 16
 	);
 	port (
 		-----------------------------------------------------------------------------
@@ -86,13 +88,22 @@ architecture behaviour of rsa_core is
 	signal sum2 : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal multi2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 
+	signal mN : std_logic_vector (C_BLOCK_SIZE - 1 + 2 downto 0);
+	signal m2N : std_logic_vector (C_BLOCK_SIZE - 1 + 2  downto 0) ; 
 
 begin
 
-
 	--Shift register for e_i, and counter e_counter for msgout_ready signal
-	e_reg : process(clk, key_e_d, e_count, multiplier_count)
+	e_reg : process(clk, key_n, key_e_d, e_count, multiplier_count)
+	variable key_n_minus : std_logic_vector (C_BLOCK_SIZE - 1 downto 0);
 	begin
+		--Generate N key signals for the multipliers
+		key_n_minus := -key_n;
+		--Adjust the bus length for the mulitipliers
+		mN <= "11" & key_n_minus;
+		--Multiply by two
+		m2N <= "1" & (key_n_minus(C_BLOCK_SIZE - 1 downto 0) & "0");
+
 		if rising_edge(clk)  then
 			multiplier_count <= multiplier_count -1;
 
@@ -148,14 +159,11 @@ begin
 				A => P0_out ,
 				B => P0_out ,
 				CLK => clk ,
-				mN => key_n ,
-				m2N => 2*key_n ,
+				mN => mN ,
+				m2N => m2N,
 				P => P1_nxt
 
 			);
-		
-		
-
 
 	-- register storing result from multiplier step
 	p1_reg : process(clk, p1_nxt)
@@ -175,7 +183,7 @@ begin
 			if msgin_last = '0' then
 				mux2_out <= sum2 (C_BLOCK_SIZE -1 downto 0);
 			else
-				mux2_out <= '0' (C_BLOCK_SIZE -2 downto 0) & '1';
+				mux2_out <= (C_BLOCK_SIZE -1 downto 1 => '0') & '1';
 			end if;  
 	end process;
 
@@ -196,8 +204,8 @@ begin
 		A => P0_out ,
 		B => c0_out ,
 		CLK => clk ,
-		mN => key_n ,
-		m2N => 2*key_n ,
+		mN => mN ,
+		m2N => m2N,
 		P => multi2_out
 
 	);
@@ -226,7 +234,7 @@ begin
 	P0_nxt <= mux1_out;
 	sum1 <= P0_out;	
 	sum2 <= P1_out;	
-
+	msgout_data <= P1_out;
 -- send relevant data to the msg_out interface. 
 
 end behaviour;
