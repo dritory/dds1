@@ -82,7 +82,7 @@ begin
 				end if;
 				e_count <= e_count - 1;
 			
-				--Sends out msgout_valid signal when counter is done
+				--Sends out valid signal when counter is done
 				if e_count <= 0  then
 					valid_out <= '1';
 					e_count <= C_BLOCK_SIZE;
@@ -119,7 +119,7 @@ begin
 	end process;
 
 	-- multiplier using p0_reg out value
-	m_exponentiation : entity work.Multiplier
+	m_multiplier : entity work.Multiplier
 			--removed generic map
 			port map (
 				A => P0_out ,
