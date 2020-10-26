@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
-<<<<<<< HEAD
 	<Run Id="synth_1" LaunchDir="F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-=======
-	<Run Id="synth_1" LaunchDir="/home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
->>>>>>> master
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>

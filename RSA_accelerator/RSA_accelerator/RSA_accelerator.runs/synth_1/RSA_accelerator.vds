@@ -2,12 +2,21 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+<<<<<<< HEAD
 # Start of session at: Mon Oct 26 18:26:13 2020
 # Process ID: 15568
 # Current directory: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1
 # Command line: vivado.exe -log RSA_accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RSA_accelerator.tcl
 # Log file: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.vds
 # Journal file: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1\vivado.jou
+=======
+# Start of session at: Mon Oct 26 18:04:15 2020
+# Process ID: 14990
+# Current directory: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1
+# Command line: vivado -log RSA_accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RSA_accelerator.tcl
+# Log file: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.vds
+# Journal file: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/vivado.jou
+>>>>>>> master
 #-----------------------------------------------------------
 source RSA_accelerator.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -20,6 +29,7 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+<<<<<<< HEAD
 INFO: [Synth 8-7075] Helper process launched with PID 7280
 ---------------------------------------------------------------------------------
 Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1013.016 ; gain = 0.000
@@ -67,3 +77,22 @@ INFO: [Common 17-83] Releasing license: Synthesis
 synth_design failed
 ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
 INFO: [Common 17-206] Exiting Vivado at Mon Oct 26 18:26:32 2020...
+=======
+INFO: [Synth 8-7075] Helper process launched with PID 15047
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2118.965 ; gain = 0.000 ; free physical = 19516 ; free virtual = 27604
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-944] 0 definitions of operator "*" match here [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:152]
+ERROR: [Synth 8-2715] syntax error near ( [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:178]
+ERROR: [Synth 8-944] 0 definitions of operator "*" match here [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:200]
+INFO: [Synth 8-2810] unit behaviour ignored due to previous errors [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:68]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 2118.965 ; gain = 0.000 ; free physical = 19610 ; free virtual = 27700
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+10 Infos, 0 Warnings, 0 Critical Warnings and 4 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 26 18:04:39 2020...
+>>>>>>> master

@@ -3,7 +3,11 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
+<<<<<<< HEAD
 <application name="pa" timeStamp="Mon Oct 26 18:26:10 2020">
+=======
+<application name="pa" timeStamp="Mon Oct 26 18:04:12 2020">
+>>>>>>> master
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="a95042b1d2684ab4986845e1f56ba14a" type="ProjectID"/>
 <property name="ProjectIteration" value="1" type="ProjectIteration"/>
@@ -18,6 +22,7 @@ This means code written to parse this file will need to be revisited each subseq
 </item>
 <item name="Java Command Handlers">
 <property name="FileExit" value="1" type="JavaHandler"/>
+<<<<<<< HEAD
 <property name="OpenProject" value="2" type="JavaHandler"/>
 <property name="RunSynthesis" value="8" type="JavaHandler"/>
 <property name="ShowView" value="6" type="JavaHandler"/>
@@ -37,6 +42,21 @@ This means code written to parse this file will need to be revisited each subseq
 </item>
 <item name="Other">
 <property name="GuiMode" value="26" type="GuiMode"/>
+=======
+<property name="OpenProject" value="3" type="JavaHandler"/>
+<property name="RunSynthesis" value="5" type="JavaHandler"/>
+<property name="ShowView" value="3" type="JavaHandler"/>
+</item>
+<item name="Gui Handlers">
+<property name="BaseDialog_OK" value="15" type="GuiHandlerData"/>
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="27" type="GuiHandlerData"/>
+<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="5" type="GuiHandlerData"/>
+<property name="GettingStartedView_OPEN_PROJECT" value="3" type="GuiHandlerData"/>
+<property name="MsgTreePanel_MESSAGE_VIEW_TREE" value="18" type="GuiHandlerData"/>
+</item>
+<item name="Other">
+<property name="GuiMode" value="11" type="GuiMode"/>
+>>>>>>> master
 <property name="BatchMode" value="0" type="BatchMode"/>
 <property name="TclMode" value="23" type="TclMode"/>
 </item>
