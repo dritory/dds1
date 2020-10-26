@@ -1,11 +1,11 @@
 
 
-RSA_accelerator/RSA_accelerator/
-RSA_accelerator/RSA_accelerator/RSA_accelerator.run
-RSA_accelerator/IP/
-Exponentiation/Exponentiation/
-Multiplier/Multiplier/
-RSA_soc/RSA_soc/
+#RSA_accelerator/RSA_accelerator/
+#RSA_accelerator/RSA_accelerator/
+#RSA_accelerator/IP/
+#Exponentiation/Exponentiation/
+#Multiplier/Multiplier/
+#RSA_soc/RSA_soc/
 
 .Xil
 */.Xil
@@ -41,7 +41,7 @@ RSA_soc/RSA_soc/
 #*.dcp(checkpoint files)
 !*.dcp
 !*.vds
-!*.pb
+#!*.pb
 #All bd comments and layout coordinates are stored within .ui
 !*.ui
 !*.ooc
@@ -68,7 +68,7 @@ RSA_soc/RSA_soc/
 #Do NOT ignore *.xpr files
 !*.xpr
 #Include *.xml files for 2013.4 or earlier version
-!*.xml
+#!*.xml
 #########
 #Constraint files
 #########
