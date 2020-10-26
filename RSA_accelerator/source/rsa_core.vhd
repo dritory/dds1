@@ -85,10 +85,11 @@ architecture behaviour of rsa_core is
 	signal sum1 : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal sum2 : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal multi2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
-
+	
+	signal mN : std_logic_vector (BUS_WIDTH - 1 + 2 downto 0);
+	signal m2N : std_logic_vector (BUS_WIDTH - 1 + 2  downto 0) ; 
 
 begin
-
 
 	--Shift register for e_i, and counter e_counter for msgout_ready signal
 	e_reg : process(clk, key_e_d, e_count, multiplier_count)
@@ -148,13 +149,11 @@ begin
 				A => P0_out ,
 				B => P0_out ,
 				CLK => clk ,
-				mN => key_n ,
-				m2N => 2*key_n ,
+				mN => mN,
+				m2N => m2N,
 				P => P1_nxt
 
 			);
-		
-		
 
 
 	-- register storing result from multiplier step
@@ -175,7 +174,7 @@ begin
 			if msgin_last = '0' then
 				mux2_out <= sum2 (C_BLOCK_SIZE -1 downto 0);
 			else
-				mux2_out <= '0' (C_BLOCK_SIZE -2 downto 0) & '1';
+				mux2_out <= (0 => '1', others => '0');
 			end if;  
 	end process;
 
@@ -197,7 +196,7 @@ begin
 		B => c0_out ,
 		CLK => clk ,
 		mN => key_n ,
-		m2N => 2*key_n ,
+		m2N => key_n ,
 		P => multi2_out
 
 	);

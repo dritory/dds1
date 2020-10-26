@@ -1,44 +1,69 @@
 #-----------------------------------------------------------
 # Vivado v2020.1 (64-bit)
-# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Mon Oct 26 11:56:38 2020
-# Process ID: 26338
-# Current directory: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1
-# Command line: vivado -log RSA_accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RSA_accelerator.tcl
-# Log file: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.vds
-# Journal file: /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/vivado.jou
+# Start of session at: Mon Oct 26 18:26:13 2020
+# Process ID: 15568
+# Current directory: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1
+# Command line: vivado.exe -log RSA_accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RSA_accelerator.tcl
+# Log file: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.vds
+# Journal file: F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source RSA_accelerator.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hakon/Documents/dds1project/dds1/RSA_accelerator/IP'.
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/hakon/Documents/vivado/Vivado/2020.1/data/ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'f:/Onedrive/NTNU/dds1/RSA_accelerator/IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Xilinx/Vivado/2020.1/data/ip'.
 Command: synth_design -top RSA_accelerator -part xc7z020clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Device 21-403] Loading part xc7z020clg400-1
-INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26405
+INFO: [Synth 8-7075] Helper process launched with PID 7280
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2118.969 ; gain = 0.000 ; free physical = 14365 ; free virtual = 25478
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1013.016 ; gain = 0.000
 ---------------------------------------------------------------------------------
-ERROR: [Synth 8-2032] formal a is not declared [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:148]
-ERROR: [Synth 8-2029] formal data_in has no actual or default value [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:145]
-INFO: [Synth 8-994] data_in is declared here [/home/hakon/Documents/dds1project/dds1/Multiplier/source/Multiplier.vhd:11]
-ERROR: [Synth 8-2715] syntax error near ( [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:178]
-ERROR: [Synth 8-2032] formal bus_width is not declared [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:193]
-ERROR: [Synth 8-2032] formal a is not declared [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:196]
-ERROR: [Synth 8-2029] formal data_in has no actual or default value [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:191]
-INFO: [Synth 8-994] data_in is declared here [/home/hakon/Documents/dds1project/dds1/Multiplier/source/Multiplier.vhd:11]
-INFO: [Synth 8-2810] unit behaviour ignored due to previous errors [/home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'rsa_accelerator' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_accelerator.vhd:84]
+	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter C_S00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M00_AXIS_START_COUNT bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'rsa_regio' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_regio.vhd:115]
+	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
+	Parameter C_register_count bound to: 33 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rsa_regio' (1#1571) [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_regio.vhd:115]
+INFO: [Synth 8-638] synthesizing module 'rsa_msgin' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgin.vhd:69]
+	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rsa_msgin' (2#1571) [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgin.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'rsa_msgout' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgout.vhd:61]
+	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_START_COUNT bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'rsa_msgout' (3#1571) [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgout.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'rsa_core' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd:68]
+	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
+WARNING: [Synth 8-614] signal 'clk' is read in the process but is not in the sensitivity list [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd:123]
+INFO: [Synth 8-638] synthesizing module 'Multiplier' [F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd:24]
+	Parameter BUS_WIDTH bound to: 256 - type: integer 
+WARNING: [Synth 8-614] signal 'sum0' is read in the process but is not in the sensitivity list [F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd:84]
+WARNING: [Synth 8-614] signal 'sum2' is read in the process but is not in the sensitivity list [F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd:93]
+INFO: [Synth 8-256] done synthesizing module 'Multiplier' (4#1571) [F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd:24]
+ERROR: [Synth 8-549] port width mismatch for port 'mN': port width = 258, actual width = 256 [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd:150]
+ERROR: [Synth 8-549] port width mismatch for port 'm2N': port width = 258, actual width = 256 [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd:151]
+ERROR: [Synth 8-285] failed synthesizing module 'rsa_core' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd:68]
+ERROR: [Synth 8-285] failed synthesizing module 'rsa_accelerator' [F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_accelerator.vhd:84]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2118.969 ; gain = 0.000 ; free physical = 14449 ; free virtual = 25555
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1033.281 ; gain = 20.266
 ---------------------------------------------------------------------------------
 RTL Elaboration failed
 INFO: [Common 17-83] Releasing license: Synthesis
-12 Infos, 0 Warnings, 0 Critical Warnings and 7 Errors encountered.
+19 Infos, 3 Warnings, 0 Critical Warnings and 5 Errors encountered.
 synth_design failed
 ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Mon Oct 26 11:56:59 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 26 18:26:32 2020...

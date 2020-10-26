@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../../Multiplier/source/Multiplier.vhd" \
+"../../../../../source/rsa_core.vhd" \
+"../../../../../testbench/rsa_accelerator_tb.vhd" \
+
+# Do not sort compile order
+nosort

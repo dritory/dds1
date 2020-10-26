@@ -23,6 +23,8 @@ architecture behaviour of Multiplier_tb is
 	constant clk_period : time := 20ns;
 
 begin
+
+	
 	mN <= "11" & N;
 	m2N <= "1" & (N(BUS_WIDTH - 1 downto 0) & "0");
 

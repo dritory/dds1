@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.tcl"
+  variable script "F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.runs/synth_1/RSA_accelerator.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,32 +70,32 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param ced.repoPaths /home/hakon/.Xilinx/Vivado/2020.1/xhub/ced_store/Vivado_example_project
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.cache/wt [current_project]
-set_property parent.project_path /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.xpr [current_project]
+set_property webtalk.parent_dir F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.cache/wt [current_project]
+set_property parent.project_path F:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part www.digilentinc.com:pynq-z1:part0:1.0 [current_project]
-set_property ip_repo_paths /home/hakon/Documents/dds1project/dds1/RSA_accelerator/IP [current_project]
+set_property ip_repo_paths f:/Onedrive/NTNU/dds1/RSA_accelerator/IP [current_project]
 update_ip_catalog
-set_property ip_output_repo /home/hakon/Documents/dds1project/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.cache/ip [current_project]
+set_property ip_output_repo f:/Onedrive/NTNU/dds1/RSA_accelerator/RSA_accelerator/RSA_accelerator.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -vhdl2008 -library xil_defaultlib {
-  /home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_regio.vhd
-  /home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_msgin.vhd
-  /home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_msgout.vhd
-  /home/hakon/Documents/dds1project/dds1/Multiplier/source/Multiplier.vhd
-  /home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_core.vhd
+  F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_regio.vhd
+  F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgin.vhd
+  F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_msgout.vhd
+  F:/Onedrive/NTNU/dds1/Multiplier/source/Multiplier.vhd
+  F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_core.vhd
 }
-read_vhdl -library xil_defaultlib /home/hakon/Documents/dds1project/dds1/RSA_accelerator/source/rsa_accelerator.vhd
+read_vhdl -library xil_defaultlib F:/Onedrive/NTNU/dds1/RSA_accelerator/source/rsa_accelerator.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -105,8 +105,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/hakon/Documents/dds1project/dds1/Master_constraints/PYNQ-Z1_C.xdc
-set_property used_in_implementation false [get_files /home/hakon/Documents/dds1project/dds1/Master_constraints/PYNQ-Z1_C.xdc]
+read_xdc F:/Onedrive/NTNU/dds1/Master_constraints/PYNQ-Z1_C.xdc
+set_property used_in_implementation false [get_files F:/Onedrive/NTNU/dds1/Master_constraints/PYNQ-Z1_C.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
