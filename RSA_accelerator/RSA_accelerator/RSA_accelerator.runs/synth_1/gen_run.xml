@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1603743164">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1603883950">
   <File Type="PA-TCL" Name="RSA_accelerator.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="RSA_accelerator_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="RSA_accelerator_reports.tcl"/>
@@ -72,6 +72,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/Master_constraints/PYNQ-Z1_C.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

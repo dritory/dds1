@@ -14,6 +14,7 @@ entity Multiplier is
 		mN : in std_logic_vector (BUS_WIDTH - 1 + 2 downto 0);
 		m2N : in std_logic_vector (BUS_WIDTH - 1 + 2  downto 0); 
 		CLK : in std_logic;
+		reset_n : in std_logic;
 		--output
 		P : out std_logic_vector (BUS_WIDTH - 1  downto 0);
 		READY : out std_logic := '0'
@@ -36,9 +37,13 @@ architecture behaviour of Multiplier is
 begin
 	
 	--Shift register for b_i, and counter for READY signal
-	b_reg : process(CLK, B, b_count)
+	b_reg : process(CLK, reset_n, B, b_count)
 	begin
-		if rising_edge(CLK) then
+		if reset_n = '0' then
+			b_i <= '0';
+			b_count <= BUS_WIDTH;
+			READY <= '0';
+		elsif rising_edge(CLK) then
 			--Increments b_i if counter is above 1
 			if b_count > 1 then
 				b_i <= B (b_count - 1);
@@ -58,9 +63,11 @@ begin
 	end process ; -- b_reg
 
 	--Register for output value P
-	p_reg : process( CLK, P_nxt )
+	p_reg : process( CLK, reset_n, P_nxt )
 	begin
-		if rising_edge(CLK) then
+		if reset_n = '0' then
+			P_out <= (others => '0');
+		elsif rising_edge(CLK) then
 			P_out <= P_nxt;
 		end if;
 	end process ; -- p_reg
@@ -83,7 +90,7 @@ begin
 	--Muliplexers for selecting correct sum
 	multiplexer1 : process(sum1)
 	begin
-		if sum1(BUS_WIDTH - 1 + 2) = '0' then
+		if  sum1(BUS_WIDTH - 1 + 2) = '0' then
 			mux1 <= sum1 (BUS_WIDTH - 1 downto 0);
 		else
 			mux1 <= sum0 (BUS_WIDTH - 1 downto 0);

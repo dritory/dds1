@@ -78,7 +78,6 @@ architecture rtl of rsa_core is
 				key_e_d   => key_e_d     ,
 				valid_in  => msgin_valid ,
 				ready_in  => msgin_ready ,
-				msgin_last =>msgin_last  ,
 				ready_out => msgout_ready,
 				valid_out => msgout_valid,
 				result    => msgout_data ,

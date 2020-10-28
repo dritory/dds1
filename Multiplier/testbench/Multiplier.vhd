@@ -21,7 +21,7 @@ architecture behaviour of Multiplier_tb is
 	signal mN : std_logic_vector (BUS_WIDTH - 1 + 2 downto 0);
 	signal m2N : std_logic_vector (BUS_WIDTH - 1 + 2  downto 0) ; 
 	constant clk_period : time := 20ns;
-
+	signal reset_n : std_logic := '0';
 begin
 	mN <= "11" & N;
 	m2N <= "1" & (N(BUS_WIDTH - 1 downto 0) & "0");
@@ -37,7 +37,8 @@ begin
 			CLK => CLK,
 			READY => READY,
 			m2N => m2N,
-			mN => mN
+			mN => mN,
+			reset_n => reset_n
 		);
 	
 	clk_proc : process

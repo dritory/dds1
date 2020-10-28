@@ -11,7 +11,6 @@ entity exponentiation is
 		--input control
 		valid_in	: in STD_LOGIC;
 		ready_in	: out STD_LOGIC;
-		msgin_last  : in STD_LOGIC;
 		--input data
 		message 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
 		key_e_d 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
@@ -50,17 +49,41 @@ architecture expBehave of exponentiation is
 	signal e_i : std_logic := '0';
 	signal e_count : integer := C_BLOCK_SIZE;
 	signal multiplier_count : integer := C_BLOCK_SIZE;
-	signal sum1 : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
-	signal sum2 : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal multi2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 
 	signal mN : std_logic_vector (C_BLOCK_SIZE - 1 + 2 downto 0);
 	signal m2N : std_logic_vector (C_BLOCK_SIZE - 1 + 2  downto 0) ; 
 
+	signal ready : std_logic := '0';
+	signal first_step : std_logic := '0';
 begin
 
-	--Shift register for e_i, and counter e_counter for msgout_ready signal
-	e_reg : process(clk, key_n, key_e_d, e_count, multiplier_count)
+	
+	control : process(clk, e_count, multiplier_count, valid_in, valid_out, ready_out)
+	begin
+		if reset_n = '0' then
+			
+		else
+			if rising_edge(clk)  then
+		
+			end if;
+			
+			
+		end if;
+
+		--first step signal
+		if e_count = C_BLOCK_SIZE and multiplier_count = C_BLOCK_SIZE then
+			first_step <= '1';
+		else
+			first_step <= '0';
+		end if;
+		
+	end process ; -- control
+
+
+
+	--Shift register for e_i, and counter e_counter for valid signal
+	e_reg : process(clk, reset_n, key_n, key_e_d, e_count, multiplier_count)
 	variable key_n_minus : std_logic_vector (C_BLOCK_SIZE - 1 downto 0);
 	begin
 		--Generate N key signals for the multipliers
@@ -69,8 +92,12 @@ begin
 		mN <= "11" & key_n_minus;
 		--Multiply by two
 		m2N <= "1" & (key_n_minus(C_BLOCK_SIZE - 1 downto 0) & "0");
-
-		if rising_edge(clk)  then
+		if reset_n = '0' then
+			e_i <= '0';
+			e_count <= C_BLOCK_SIZE;
+			multiplier_count <= C_BLOCK_SIZE;
+			valid_out <= '0';
+		elsif rising_edge(clk)  then
 			multiplier_count <= multiplier_count -1;
 
 			if multiplier_count <= 0 then
@@ -89,7 +116,7 @@ begin
 				else
 					valid_out <= '0';
 				end if;
-
+				
 				multiplier_count <= C_BLOCK_SIZE;
 			end if;
 		end if;
@@ -98,22 +125,23 @@ begin
 -- exponentiation loop
 
 	-- multiplexer for M and sum1 from p1 register.  
-	mux1 : process(message, sum1, msgin_last)
+	mux1 : process(message, P1_out, first_step)
 	begin	
-		if rising_edge(clk) then
-			if msgin_last = '0' then
-				mux1_out <= sum1 (C_BLOCK_SIZE -1 downto 0);
-			else
-				mux1_out <= message (C_BLOCK_SIZE -1 downto 0);
-			end if;
+		
+		if first_step = '0' then
+			mux1_out <= P1_out (C_BLOCK_SIZE -1 downto 0);
+		else
+			mux1_out <= message (C_BLOCK_SIZE -1 downto 0);
 		end if;	
 		
 	end process;
 
 	-- register P0 storing muxed value
-	p0_reg : process(clk, P0_nxt)
+	p0_reg : process(clk, reset_n, P0_nxt)
 	begin	
-		if rising_edge(clk) then
+		if reset_n = '0' then
+			P0_out <= (others => '0');
+		elsif rising_edge(clk) then
 			P0_out <= P0_nxt;
 		end if;
 	end process;
@@ -127,14 +155,16 @@ begin
 				CLK => clk ,
 				mN => mN ,
 				m2N => m2N,
-				P => P1_nxt
-
+				P => P1_nxt,
+				Reset_n => reset_n
 			);
 
 	-- register storing result from multiplier step
-	p1_reg : process(clk, p1_nxt)
+	p1_reg : process(clk,reset_n, p1_nxt)
 	begin
-		if rising_edge(clk) then
+		if reset_n = '0' then
+			P1_out <= (others => '0');
+		elsif rising_edge(clk) then
 			P1_out <= P1_nxt;
 		end if;
 	end process;
@@ -144,19 +174,21 @@ begin
 
 
 	-- multiplexer for 1(1st step) and feedpack loop
-	mux2 : process(sum2, msgin_last)
+	mux2 : process(C1_out, first_step)
 	begin
-			if msgin_last = '0' then
-				mux2_out <= sum2 (C_BLOCK_SIZE -1 downto 0);
+			if first_step = '0' then
+				mux2_out <= C1_out (C_BLOCK_SIZE -1 downto 0);
 			else
 				mux2_out <= (C_BLOCK_SIZE -1 downto 1 => '0') & '1';
 			end if;  
 	end process;
 
 	-- register c0 storing muxed value
-	c0_reg : process(clk, c0_nxt)
+	c0_reg : process(clk, reset_n, c0_nxt)
 	begin
-		if rising_edge(clk) then
+		if reset_n = '0' then
+			c0_out <= (others => '0');
+		elsif rising_edge(clk) then
 			c0_out <= c0_nxt;
 		end if;
 	end process;
@@ -172,8 +204,8 @@ begin
 		CLK => clk ,
 		mN => mN ,
 		m2N => m2N,
-		P => multi2_out
-
+		P => multi2_out,
+		reset_n => reset_n
 	);
 		
 
@@ -188,9 +220,11 @@ begin
 	end process;
 
 	-- register c1 storing value from mux3
-	c1_reg : process(clk, c1_nxt)
+	c1_reg : process(clk, reset_n, c1_nxt)
 	begin
-		if rising_edge(clk) then
+		if reset_n = '0' then
+			c1_out <= (others => '0');
+		elsif rising_edge(clk) then
 			c1_out <= c1_nxt;
 		end if;
 	end process;
@@ -198,11 +232,9 @@ begin
 -- connecting processes
 	-- inputs mux1 signal into register p0
 	P0_nxt <= mux1_out;
-	sum1 <= P0_out;	
-	sum2 <= P1_out;	
+	C1_nxt <= mux3_out;
+	C0_nxt <= mux2_out;
 
-
-	result <= P1_out;
-	ready_in <= ready_out;
+	result <= c1_out;
 
 end expBehave;
