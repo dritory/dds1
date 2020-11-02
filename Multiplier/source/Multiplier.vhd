@@ -15,6 +15,7 @@ entity Multiplier is
 		m2N : in std_logic_vector (BUS_WIDTH - 1 + 2  downto 0); 
 		CLK : in std_logic;
 		reset_n : in std_logic;
+		first_step : in std_logic;
 		--output
 		P : out std_logic_vector (BUS_WIDTH - 1  downto 0);
 		READY : out std_logic := '0'
@@ -44,26 +45,32 @@ begin
 			b_count <= BUS_WIDTH;
 			READY <= '0';
 		elsif rising_edge(CLK) then
-			--Increments b_i if counter is above 1
-			if b_count > 1 then
-				b_i <= B (b_count - 1);
-			else
-				b_i <= '0';
-			end if;
-			b_count <= b_count - 1;
-			
-			--Sends out READY signal when counter is done
-			if b_count <= 0 then
-				READY <= '1';
-				b_count <= BUS_WIDTH;
+			if first_step = '0' then
+				--Increments b_i if counter is above 1
+				if b_count > 1 then
+					b_i <= B (b_count - 1);
+				else
+					b_i <= '0';
+				end if;
+				b_count <= b_count - 1;
+				
+				--Sends out READY signal when counter is done
+				if b_count <= 0 then
+					READY <= '1';
+					b_count <= BUS_WIDTH;
+				else
+					READY <= '0';
+				end if;
 			else
 				READY <= '0';
+				b_i <= '0';
+				b_count <= BUS_WIDTH;
 			end if;
 		end if;
 	end process ; -- b_reg
 
 	--Register for output value P
-	p_reg : process( CLK, reset_n, P_nxt )
+	p_reg : process(CLK, reset_n, P_nxt )
 	begin
 		if reset_n = '0' then
 			P_out <= (others => '0');
@@ -88,16 +95,16 @@ begin
 	end process ; -- mod_adder
 
 	--Muliplexers for selecting correct sum
-	multiplexer1 : process(sum1)
+	multiplexer1 : process(sum1, sum0)
 	begin
-		if  sum1(BUS_WIDTH - 1 + 2) = '0' then
+		if sum1(BUS_WIDTH - 1 + 2) = '0' then
 			mux1 <= sum1 (BUS_WIDTH - 1 downto 0);
 		else
 			mux1 <= sum0 (BUS_WIDTH - 1 downto 0);
 		end if;
 	end process ; -- multiplexer1
 
-	multiplexer2 : process( sum0, mux1 )
+	multiplexer2 : process(sum2, mux1)
 	begin
 		if sum2(BUS_WIDTH - 1 + 2) = '0' then
 			mux2 <= sum2 (BUS_WIDTH - 1 downto 0);
