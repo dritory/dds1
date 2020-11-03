@@ -27,7 +27,7 @@ architecture behaviour of Multiplier is
 	signal b_i : std_logic := '0';
 	signal b_count : integer := BUS_WIDTH;
 	signal p_nxt : std_logic_vector (BUS_WIDTH - 1  downto 0) := (others => '0');
-	signal P_shift : std_logic_vector (BUS_WIDTH - 1  downto 0) := (others => '0');
+	signal P_shift : std_logic_vector (BUS_WIDTH - 1 + 1  downto 0) := (others => '0');
 	signal P_out : std_logic_vector (BUS_WIDTH - 1  downto 0) := (others => '0');
 	
 	signal sum0 : std_logic_vector (BUS_WIDTH - 1 + 2  downto 0);
@@ -47,7 +47,7 @@ begin
 		elsif rising_edge(CLK) then
 			if first_step = '0' then
 				--Increments b_i if counter is above 1
-				if b_count > 1 then
+				if b_count >= 1 then
 					b_i <= B (b_count - 1);
 				else
 					b_i <= '0';
@@ -55,7 +55,7 @@ begin
 				b_count <= b_count - 1;
 				
 				--Sends out READY signal when counter is done
-				if b_count <= 0 then
+				if b_count <= -1 then
 					READY <= '1';
 					b_count <= BUS_WIDTH;
 				else
@@ -70,9 +70,9 @@ begin
 	end process ; -- b_reg
 
 	--Register for output value P
-	p_reg : process(CLK, reset_n, P_nxt )
+	p_reg : process(CLK, reset_n, P_nxt, first_step )
 	begin
-		if reset_n = '0' then
+		if (reset_n = '0') or (first_step ='1') then
 			P_out <= (others => '0');
 		elsif rising_edge(CLK) then
 			P_out <= P_nxt;
@@ -81,10 +81,10 @@ begin
 	
 	--First adder and AND gate
 	adder0 : process(A, b_i, P_shift)
-	variable and_A : std_logic_vector (BUS_WIDTH - 1  downto 0);
+	variable and_A : std_logic_vector (BUS_WIDTH - 1 +1 downto 0);
 	begin
-		and_A := A and b_i;
-		sum0 <= "00" & (and_A + P_shift);
+		and_A := "0" & (A and b_i);
+		sum0 <= "0" & (and_A + P_shift);
 	end process ; -- adder0
 	
 	--The two modulus subtractors
@@ -119,6 +119,6 @@ begin
 	--Outputs the register to the P output
 	P <= P_out;
 	--Shifts P left by one and add 0, equivalent to multipying by two
-	P_shift <= P_out (BUS_WIDTH - 2 downto 0) & '0';
+	P_shift <= P_out (BUS_WIDTH - 1 downto 0) & '0';
 
 end behaviour;
