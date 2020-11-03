@@ -23,7 +23,7 @@ use ieee.numeric_std.all;
 entity rsa_core is
 	generic (
 		-- Users to add parameters here
-		C_BLOCK_SIZE          : integer := 16
+		C_BLOCK_SIZE          : integer := 256
 	);
 	port (
 		-----------------------------------------------------------------------------
