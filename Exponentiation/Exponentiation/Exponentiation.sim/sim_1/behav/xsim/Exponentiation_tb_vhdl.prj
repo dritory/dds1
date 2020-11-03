@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../../Multiplier/source/Multiplier.vhd" \
+"../../../../../source/exp_control.vhd" \
+"../../../../../source/exponentiation.vhd" \
+"../../../../../testbench/exponentiation_tb.vhd" \
+
+# Do not sort compile order
+nosort

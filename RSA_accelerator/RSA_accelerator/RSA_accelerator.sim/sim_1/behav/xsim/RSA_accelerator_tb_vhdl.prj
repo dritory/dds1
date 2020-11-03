@@ -1,5 +1,6 @@
 # compile vhdl design source files
 vhdl2008 xil_defaultlib  \
+"../../../../../../Exponentiation/source/exp_control.vhd" \
 "../../../../../../Multiplier/source/Multiplier.vhd" \
 "../../../../../../Exponentiation/source/exponentiation.vhd" \
 "../../../../../source/rsa_core.vhd" \

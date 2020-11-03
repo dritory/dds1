@@ -19,6 +19,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
 entity rsa_core is
 	generic (
 		-- Users to add parameters here
@@ -67,24 +68,24 @@ end rsa_core;
 
 architecture rtl of rsa_core is
 
-begin
-	i_exponentiation : entity work.exponentiation
-		generic map (
-			C_block_size => C_BLOCK_SIZE
-		)
-		port map (
-			message   => msgin_data  ,
-			key       => key_e_d     ,
-			valid_in  => msgin_valid ,
-			ready_in  => msgin_ready ,
-			ready_out => msgout_ready,
-			valid_out => msgout_valid,
-			result    => msgout_data ,
-			modulus   => key_n       ,
-			clk       => clk         ,
-			reset_n   => reset_n
-		);
-
-	msgout_last  <= msgin_last;
-	rsa_status   <= (others => '0');
-end rtl;
+	begin
+		i_exponentiation : entity work.exponentiation
+			generic map (
+				C_block_size => C_BLOCK_SIZE
+			)
+			port map (
+				message   => msgin_data  ,
+				key_e_d   => key_e_d     ,
+				valid_in  => msgin_valid ,
+				ready_in  => msgin_ready ,
+				ready_out => msgout_ready,
+				valid_out => msgout_valid,
+				result    => msgout_data ,
+				key_n   => key_n       ,
+				clk       => clk         ,
+				reset_n   => reset_n
+			);
+	
+		msgout_last  <= msgin_last;
+		rsa_status   <= (others => '0');
+	end rtl;
