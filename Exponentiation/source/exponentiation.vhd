@@ -58,14 +58,10 @@ architecture expBehave of exponentiation is
 	signal mN : std_logic_vector (C_BLOCK_SIZE - 1 + 2 downto 0);
 	signal m2N : std_logic_vector (C_BLOCK_SIZE - 1 + 2  downto 0) ; 
 
-	signal load_M : std_logic;
 	signal first_step_mult : std_logic;
 
-	type state_type is (wait_in, init, begin_calc, incr, calc, multiply, wait_out);
-	signal state   : state_type;
-	signal next_state : state_type;
 begin
-	-- multiplier using p0_reg out value
+	-- control block
 	m_control : entity work.exp_control
 			generic map (
 				C_BLOCK_SIZE => C_BLOCK_SIZE
@@ -74,7 +70,6 @@ begin
 				--input control
 				valid_in => valid_in,
 				ready_in => ready_in,
-				load_M => load_M,
 
 				--input data
 				key_e_d => key_e_d,
@@ -129,11 +124,11 @@ begin
 	end process;
 
 	--register M0 storing incoming message value
-	m0_reg : process(load_M, reset, M0_nxt)
+	m0_reg : process(clk, reset, M0_nxt)
 	begin	
 		if reset = '0' then
 			M0_out <= (others => '0');
-		elsif load_M = '1' then --We actually want a latch here
+		elsif rising_edge(clk) then
 			M0_out <= M0_nxt;
 		end if;
 	end process;

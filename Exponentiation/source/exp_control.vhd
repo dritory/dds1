@@ -11,7 +11,6 @@ entity exp_control is
 		--input control
 		valid_in	: in STD_LOGIC;
         ready_in	: out STD_LOGIC;
-        load_M : out std_logic;
 
         --input data
 		key_e_d 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
@@ -64,10 +63,10 @@ begin
 		end if;
 	end process;
 	
+	--sequential logic for the fsm
 	state_seqv : process (clk, e_count)
 	begin
 		if rising_edge(clk) then
-			
 			case state is
 				when incr=>
 					e_count <= e_count + 1;
@@ -84,13 +83,13 @@ begin
 			end case;
 		end if;
 	end process;
+
 	state_comb : process (state, valid_in, e_count, multiplier_count, ready_out)
 	begin
 		ready_in <= '0';
 		valid_out <= '0';
 		reset_n_exp <= '1';
 		exp_clk <= '0';
-		load_M <= '0';
 		case state is
 			when init=>
 				reset_n_exp <= '0';
@@ -98,7 +97,6 @@ begin
 			when wait_in=>
 				ready_in <= '1';
 				if valid_in = '1' then
-					load_M <= '1';
 					next_state <= calc;
 				else
 					next_state <= wait_in;
@@ -108,7 +106,6 @@ begin
 			when incr=>
 				next_state <= calc;
 			when calc=>
-				
 				if e_count >= C_BLOCK_SIZE then
 					next_state <= wait_out;
 				else
@@ -133,7 +130,8 @@ begin
 		end case;
 	end process;
 
-	control : process(exp_clk, e_count, key_e_d)
+	
+	e_i_control : process(exp_clk, e_count, key_e_d)
 	begin
 		if reset_n = '0' then
 			e_i <= '0';
@@ -143,11 +141,10 @@ begin
             else
                 e_i <= '0';
             end if;
-            
         end if;
-
-	end process; -- control
-    
+	end process; -- e_i_control
+	
+	--sends out mux signals for mux1 and mux2
     mux_signals : process(e_count)
     begin
         if e_count > 0 then
@@ -163,6 +160,7 @@ begin
         end if;
     end process ; -- mux_signals
 
+	--sets up the n key signals for the multipliers
 	key_n_gen : process(key_n)
 	variable key_n_minus : std_logic_vector (C_BLOCK_SIZE - 1 downto 0);
 	begin
