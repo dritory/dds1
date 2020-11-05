@@ -22,6 +22,7 @@ entity exp_control is
 	    first_step_mult : out std_logic;
         mux_in_msg : out std_logic;
 	    mux_in_one : out std_logic;
+		load_msg : out std_logic;
 
 		--ouput control
 		ready_out	: in STD_LOGIC;
@@ -49,9 +50,11 @@ architecture expBehave of exp_control is
 	signal e_count : integer range 0 to 256:= 0;
     signal multiplier_count : integer range 0 to 256 := 0;
     
-	type state_type is (wait_in, init, begin_calc, incr, calc, multiply, wait_out);
+	type state_type is (wait_in, init, incr, calc, multiply, wait_out);
 	signal state   : state_type;
 	signal next_state : state_type;
+
+	
 begin
 
 	next_state_logic : process (clk, reset_n_in)
@@ -90,6 +93,7 @@ begin
 		valid_out <= '0';
 		reset_n_exp <= '1';
 		exp_clk <= '0';
+		load_msg <= '0';
 		case state is
 			when init=>
 				reset_n_exp <= '0';
@@ -101,8 +105,6 @@ begin
 				else
 					next_state <= wait_in;
 				end if;
-			when begin_calc=>
-				next_state <= calc;
 			when incr=>
 				next_state <= calc;
 			when calc=>

@@ -80,7 +80,7 @@ begin
 				first_step_mult => first_step_mult,
 				mux_in_msg => mux_in_msg,
 				mux_in_one => mux_in_one,
-
+				
 				--ouput control
 				ready_out	=> ready_out,
 				valid_out	=> valid_out,
@@ -128,7 +128,7 @@ begin
 	begin	
 		if reset = '0' then
 			M0_out <= (others => '0');
-		elsif rising_edge(clk) then
+		elsif rising_edge(clk) and (valid_in = '1')then
 			M0_out <= M0_nxt;
 		end if;
 	end process;
