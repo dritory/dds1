@@ -9,7 +9,7 @@ use std.textio.all;
 
 entity exponentiation_tb is
 	generic (
-		C_block_size : integer := 16
+		C_block_size : integer := 256
 	);
 end exponentiation_tb;
 
@@ -89,7 +89,7 @@ begin
 							test_counter := test_counter + 1;	
 							tc_ctrl_state <= e_TC_RUN_TC;
 							expected_msgout_data := x"0cea1651ef44be1f1f1476b7539bed10d73e3aac782bd9999a1e5a790932bfe9";
-							modulus <= x"99925173ad65686715385ea800cd28120288fc70a9bc98dd4c90d676f8ff768d"; --- something valid
+							modulus <= x"99925173ad65686715385ea800cd28120288fc70a9bc98dd4c90d676f8ff768d"; 
 							key <= x"0cea1651ef44be1f1f1476b7539bed10d73e3aac782bd9999a1e5a790932bfe9";  
 							valid_in <='1';
 						
@@ -113,16 +113,15 @@ begin
 					-- Testcase is finished
 					when e_TC_COMPLETED =>
 							assert true;
-								report "COMPARE MSGOUT_DATA" 
-							assert expected_msgout_data = result
-								report "Output message differs from the expected result"
-								severity Failure;
+								report "COMPARE MSGOUT_DATA"; 
+							assert expected_msgout_data = result;
+								report "Output message differs from the expected result" severity Failure;
 							assert true;
-								report "MSGOUT_DATA valid"
+								report "MSGOUT_DATA valid";
 	
 	
 					-- All tests have been completed
-					when others => e_TC_ALL_TESTS_COMPLETED =>
+					when e_TC_ALL_TESTS_COMPLETED =>
 						assert true;
 							report "********************************************************************************";
 							report "ALL TESTS FINISHED SUCCESSFULLY";
