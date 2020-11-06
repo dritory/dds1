@@ -9,7 +9,7 @@ use std.textio.all;
 
 entity exponentiation_tb is
 	generic (
-		C_block_size : integer := 16
+		C_block_size : integer := 256
 	);
 end exponentiation_tb;
 
@@ -66,13 +66,13 @@ begin
 				modulus                <= (others => '0');
 				key                <= (others => '0');
 				valid_in <= '0';
-				ready_in <= '0';
+				ready_out <= '0';
 
 			elsif (clk'event and clk='1') then
 	
 				-- Default values
 				valid_in <= '0';
-				ready_in <= '0';
+				ready_out <= '0';
 
 				case tc_ctrl_state is
 	
@@ -85,12 +85,12 @@ begin
 
 
 						if (test_counter = 0) then	
-							ready_in <= '1';
 							test_counter := test_counter + 1;	
 							tc_ctrl_state <= e_TC_RUN_TC;
-							expected_msgout_data := x"0cea1651ef44be1f1f1476b7539bed10d73e3aac782bd9999a1e5a790932bfe9";
+							message <= x"0a23232323232323232323232323232323232323232323232323232323232323";
+							expected_msgout_data := x"85ee722363960779206a2b37cc8b64b5fc12a934473fa0204bbaaf714bc90c01";
 							modulus <= x"99925173ad65686715385ea800cd28120288fc70a9bc98dd4c90d676f8ff768d"; --- something valid
-							key <= x"0cea1651ef44be1f1f1476b7539bed10d73e3aac782bd9999a1e5a790932bfe9";  
+							key <= x"0000000000000000000000000000000000000000000000000000000000010001";  
 							valid_in <='1';
 						
 						else
@@ -106,23 +106,24 @@ begin
 	
 					-- Wait for all the output messages to arrive
 					when e_TC_WAIT_COMPLETED =>
-						if(ready_out = '1' and valid_out = '1') then
+						ready_out <= '1';
+						if(valid_out = '1') then
 							tc_ctrl_state <= e_TC_COMPLETED;
 						end if;
 	
 					-- Testcase is finished
 					when e_TC_COMPLETED =>
 							assert true;
-								report "COMPARE MSGOUT_DATA" 
+								report "COMPARE MSGOUT_DATA";
 							assert expected_msgout_data = result
 								report "Output message differs from the expected result"
 								severity Failure;
 							assert true;
-								report "MSGOUT_DATA valid"
+								report "MSGOUT_DATA valid";
 	
 	
 					-- All tests have been completed
-					when others => e_TC_ALL_TESTS_COMPLETED =>
+					when others => --e_TC_ALL_TESTS_COMPLETED =>
 						assert true;
 							report "********************************************************************************";
 							report "ALL TESTS FINISHED SUCCESSFULLY";
