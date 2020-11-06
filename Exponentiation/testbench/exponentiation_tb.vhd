@@ -78,13 +78,13 @@ begin
 	
 					-- Start a new test case
 					when e_TC_START_TC =>
-						assert true;
-							report "********************************************************************************";
-							report "STARTING NEW TESTCASE";
-							report "********************************************************************************";
-
 
 						if (test_counter = 0) then	
+							assert true;
+								report "********************************************************************************";
+								report "STARTING NEW TESTCASE";
+								report "********************************************************************************";
+
 							test_counter := test_counter + 1;	
 							tc_ctrl_state <= e_TC_RUN_TC;
 							message <= x"0a23232323232323232323232323232323232323232323232323232323232323";
@@ -108,18 +108,25 @@ begin
 					when e_TC_WAIT_COMPLETED =>
 						ready_out <= '1';
 						if(valid_out = '1') then
-							tc_ctrl_state <= e_TC_COMPLETED;
+							assert true;
+							report "COMPARE MSGOUT_DATA";
+						assert expected_msgout_data = result
+							report "Output message differs from the expected result"
+							severity Failure;
+						assert true;
+							report "MSGOUT_DATA valid";
+							tc_ctrl_state <= e_TC_START_TC;
 						end if;
 	
 					-- Testcase is finished
-					when e_TC_COMPLETED =>
-							assert true;
-								report "COMPARE MSGOUT_DATA";
-							assert expected_msgout_data = result
-								report "Output message differs from the expected result"
-								severity Failure;
-							assert true;
-								report "MSGOUT_DATA valid";
+					---when e_TC_COMPLETED =>
+						--	assert true;
+						--		report "COMPARE MSGOUT_DATA";
+						--	assert expected_msgout_data = result
+						--		report "Output message differs from the expected result"
+						--		severity Failure;
+						--	assert true;
+						--		report "MSGOUT_DATA valid";
 	
 	
 					-- All tests have been completed
