@@ -11,6 +11,8 @@ entity exponentiation is
 		--input control
 		valid_in	: in STD_LOGIC;
 		ready_in	: out STD_LOGIC;
+		last_in		: in STD_LOGIC;
+		
 		--input data
 		message 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
 		key_e_d 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
@@ -18,6 +20,7 @@ entity exponentiation is
 		--ouput control
 		ready_out	: in STD_LOGIC;
 		valid_out	: out STD_LOGIC;
+		last_out	: out STD_LOGIC;
 
 		--output data
 		result 		: out STD_LOGIC_VECTOR(C_block_size-1 downto 0);
@@ -40,7 +43,7 @@ architecture expBehave of exponentiation is
 	signal mux1_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal mux2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal mux3_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
-
+	
 	signal multi2_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 	signal multiexp_out : std_logic_vector(C_BLOCK_SIZE -1 downto 0) := (others => '0');
 
@@ -70,6 +73,7 @@ begin
 				--input control
 				valid_in => valid_in,
 				ready_in => ready_in,
+				last_in	=> last_in,
 
 				--input data
 				key_e_d => key_e_d,
@@ -84,7 +88,7 @@ begin
 				--ouput control
 				ready_out	=> ready_out,
 				valid_out	=> valid_out,
-
+				last_out	=> last_out,
 				--modulus
 				key_n 	=> key_n,
 				

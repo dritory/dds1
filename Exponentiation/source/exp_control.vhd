@@ -11,10 +11,10 @@ entity exp_control is
 		--input control
 		valid_in	: in STD_LOGIC;
         ready_in	: out STD_LOGIC;
+		last_in		: in STD_LOGIC;
 
         --input data
 		key_e_d 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
-
 
         --datapath control
         e_i : out std_logic;
@@ -27,6 +27,7 @@ entity exp_control is
 		--ouput control
 		ready_out	: in STD_LOGIC;
 		valid_out	: out STD_LOGIC;
+		last_out	: out STD_LOGIC;
 
 		--modulus
         key_n 	: in STD_LOGIC_VECTOR(C_block_size-1 downto 0);
@@ -54,15 +55,17 @@ architecture expBehave of exp_control is
 	signal state   : state_type;
 	signal next_state : state_type;
 
-	
+	signal last_msg, last_msg_nxt : std_logic := '0';
 begin
 
 	next_state_logic : process (clk, reset_n_in)
 	begin
 		if reset_n_in = '0' then
 			state <= wait_in;
+			last_msg <= '0';
 		elsif rising_edge(clk) then
 			state <= next_state;
+			last_msg <= last_msg_nxt;
 		end if;
 	end process;
 	
@@ -70,6 +73,7 @@ begin
 	state_seqv : process (clk, e_count)
 	begin
 		if rising_edge(clk) then
+			
 			case state is
 				when incr=>
 					e_count <= e_count + 1;
@@ -94,6 +98,7 @@ begin
 		reset_n_exp <= '1';
 		exp_clk <= '0';
 		load_msg <= '0';
+		last_msg_nxt <= last_msg;
 		case state is
 			when init=>
 				reset_n_exp <= '0';
@@ -101,6 +106,7 @@ begin
 			when wait_in=>
 				ready_in <= '1';
 				if valid_in = '1' then
+					last_msg_nxt <= last_in;
 					next_state <= calc;
 				else
 					next_state <= wait_in;
@@ -175,5 +181,5 @@ begin
 	end process ; -- key_n_gen
 
 	reset_n <= reset_n_in and reset_n_exp;
-
+	last_out <= last_msg;
 end expBehave;
