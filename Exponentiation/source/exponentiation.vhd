@@ -53,7 +53,7 @@ architecture expBehave of exponentiation is
 	signal reset : std_logic;
 
 	signal e_i : std_logic;
-	signal exp_clk : std_logic;
+	signal exp_enable : std_logic;
 	
 	signal mux_in_msg : std_logic;
 	signal mux_in_one : std_logic;
@@ -80,7 +80,7 @@ begin
 
 				--datapath control
 				e_i =>e_i,
-				exp_clk => exp_clk,
+				exp_enable => exp_enable,
 				first_step_mult => first_step_mult,
 				mux_in_msg => mux_in_msg,
 				mux_in_one => mux_in_one,
@@ -118,11 +118,11 @@ begin
 	end process;
 
 	--register P0 storing muxed value
-	p0_reg : process(exp_clk, reset, P0_nxt)
+	p0_reg : process(clk, exp_enable, reset, P0_nxt)
 	begin	
 		if reset = '0' then
 			P0_out <= (others => '0');
-		elsif rising_edge(exp_clk) then
+		elsif rising_edge(clk) and (exp_enable = '1') then
 			P0_out <= P0_nxt;
 		end if;
 	end process;
@@ -193,11 +193,11 @@ begin
 	end process;
 
 	-- register c1 storing value from mux3
-	c1_reg : process(exp_clk, reset, c1_nxt)
+	c1_reg : process(clk, exp_enable, reset, c1_nxt)
 	begin
 		if reset = '0' then
 			c1_out <= (others => '0');
-		elsif rising_edge(exp_clk) then
+		elsif rising_edge(clk) and (exp_enable = '1') then
 			c1_out <= c1_nxt;
 		end if;
 	end process;

@@ -18,7 +18,7 @@ entity exp_control is
 
         --datapath control
         e_i : out std_logic;
-	    exp_clk : out std_logic;
+	    exp_enable : out std_logic;
 	    first_step_mult : out std_logic;
         mux_in_msg : out std_logic;
 	    mux_in_one : out std_logic;
@@ -48,65 +48,32 @@ architecture expBehave of exp_control is
 	
 	signal reset_n_exp : std_logic := '0';
 
-	signal e_count : integer range 0 to 256:= 0;
-    signal multiplier_count : integer range 0 to 256 := 0;
+	signal e_count, e_count_nxt : integer range 0 to 256:= 0;
+    signal multiplier_count, multiplier_count_nxt : integer range 0 to 256 := 0;
     
 	type state_type is (wait_in, init, incr, calc, multiply, wait_out);
 	signal state   : state_type;
 	signal next_state : state_type;
-
+	signal first_step_mult_nxt : std_logic := '0';
 	signal last_msg, last_msg_nxt : std_logic := '0';
 begin
 
-	next_state_logic : process (clk, reset_n_in)
+	next_state_seqv : process (clk, reset_n_in)
 	begin
 		if reset_n_in = '0' then
 			state <= wait_in;
-			last_msg <= '0';
 		elsif rising_edge(clk) then
 			state <= next_state;
-			last_msg <= last_msg_nxt;
-		end if;
-	end process;
-	
-	--sequential logic for the fsm
-	state_seqv : process (clk, e_count)
-	begin
-		if rising_edge(clk) then
-			
-			case state is
-				when incr=>
-					e_count <= e_count + 1;
-				when calc=>
-					first_step_mult <= '1';
-					multiplier_count <= 0;
-				when multiply=>
-					multiplier_count <= multiplier_count + 1;
-					first_step_mult <= '0';
-				when others=>
-					multiplier_count <= 0;
-					e_count <= 0;
-					first_step_mult <= '0';
-			end case;
 		end if;
 	end process;
 
-	state_comb : process (state, valid_in, e_count, multiplier_count, ready_out)
+	next_state_comb : process (state, valid_in, e_count, multiplier_count, ready_out)
 	begin
-		ready_in <= '0';
-		valid_out <= '0';
-		reset_n_exp <= '1';
-		exp_clk <= '0';
-		load_msg <= '0';
-		last_msg_nxt <= last_msg;
 		case state is
 			when init=>
-				reset_n_exp <= '0';
 				next_state <= wait_in;
 			when wait_in=>
-				ready_in <= '1';
 				if valid_in = '1' then
-					last_msg_nxt <= last_in;
 					next_state <= calc;
 				else
 					next_state <= wait_in;
@@ -120,14 +87,12 @@ begin
 					next_state <= multiply;
 				end if;
 			when multiply=>
-				exp_clk <= '1';	
 				if multiplier_count >= C_BLOCK_SIZE then
 					next_state <= incr;
 				else
 					next_state <= multiply;
 				end if;
 			when wait_out=>
-				valid_out <= '1';
 				if ready_out = '1' then
 					next_state <= init;
 				else
@@ -136,14 +101,64 @@ begin
 			when others =>
 				next_state <= init;
 		end case;
+	end process;			
+	state_comb : process (state, valid_in, last_in,last_msg, e_count, multiplier_count, ready_out)
+	begin
+		ready_in <= '0';
+		valid_out <= '0';
+		reset_n_exp <= '1';
+		exp_enable <= '0';
+		load_msg <= '0';
+		last_msg_nxt <= last_msg;
+		e_count_nxt <= e_count;
+		multiplier_count_nxt <= 0;
+		first_step_mult_nxt <= '0';
+		case state is
+			when init=>
+				reset_n_exp <= '0';
+				e_count_nxt <= 0;
+			when wait_in=>
+				ready_in <= '1';
+				if valid_in = '1' then
+					last_msg_nxt <= last_in;
+				end if;
+			when incr=>
+				e_count_nxt <= e_count + 1;
+				
+			when calc=>
+				first_step_mult_nxt <= '1';
+				if e_count < C_BLOCK_SIZE then
+					exp_enable <= '1';
+				end if;
+			when multiply=>
+				multiplier_count_nxt <= multiplier_count + 1;
+			when wait_out=>
+				valid_out <= '1';
+			when others=>
+		end case;
+	end process;				
+	
+	
+	registers : process (clk, reset_n_in, e_count)
+	begin
+		if reset_n_in = '0' then
+			last_msg <= '0';
+			first_step_mult <= '0';
+			e_count <= 0;
+			multiplier_count <= 0;
+		elsif rising_edge(clk) then
+			last_msg <= last_msg_nxt;
+			first_step_mult <= first_step_mult_nxt;
+			multiplier_count <= multiplier_count_nxt;
+			e_count <= e_count_nxt;
+		end if;
 	end process;
 
-	
-	e_i_control : process(exp_clk, e_count, key_e_d)
+	e_i_control : process(clk, exp_enable, e_count, key_e_d)
 	begin
 		if reset_n = '0' then
 			e_i <= '0';
-        elsif rising_edge(exp_clk) then
+        elsif rising_edge(clk) and (exp_enable = '1') then
             if (e_count < C_BLOCK_SIZE - 1) then
                 e_i <= key_e_d (e_count);
             else
