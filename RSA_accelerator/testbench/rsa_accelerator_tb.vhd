@@ -26,7 +26,7 @@ architecture struct of rsa_accelerator_tb is
 
 	-- RENAME this constant to "long_test" for more comprehensive tests
 	-- "short_test" for shorter tests
-	constant C_TESTCASE_FOLDER: string := "short_test";
+	constant C_TESTCASE_FOLDER: string := "long_test";
 
 	-----------------------------------------------------------------------------
 	-- Clocks and reset
@@ -532,9 +532,9 @@ begin
 							assert expected_msgout_data = msgout_data
 								report "Output message differs from the expected result"
 								severity Failure;
-							-- assert msgout_counter(1) = msgout_last
-							-- 	report "msgin_last/msgout_last mismatch"
-							-- 	severity Failure;
+							assert msgout_counter(1) = msgout_last
+								report "msgin_last/msgout_last mismatch"
+								severity Failure;
 
 						-- Receive a new message now and then
 						when others => --"00"|"01"|"10" =>
