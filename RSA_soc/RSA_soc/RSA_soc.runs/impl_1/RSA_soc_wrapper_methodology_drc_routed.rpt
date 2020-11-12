@@ -1,0 +1,73 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Nov 11 11:34:44 2020
+| Host         : DESKTOP-H16983N running 64-bit major release  (build 9200)
+| Command      : report_methodology -file RSA_soc_wrapper_methodology_drc_routed.rpt -pb RSA_soc_wrapper_methodology_drc_routed.pb -rpx RSA_soc_wrapper_methodology_drc_routed.rpx
+| Design       : rsa_soc_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 2
++---------+----------+------------------------------+------------+
+| Rule    | Severity | Description                  | Violations |
++---------+----------+------------------------------+------------+
+| LUTAR-1 | Warning  | LUT drives async reset alert | 2          |
++---------+----------+------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/P_out[255]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[0]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[100]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[101]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[102]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[103]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[104]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[105]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[106]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[107]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[108]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[109]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[10]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[110]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[111]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_multiplier/P_out_reg[112]/CLR (the first 15 of 512 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/m_control/e_i_i_3, with 2 or more inputs, drives asynchronous preset/clear pin(s) rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[0]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[100]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[101]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[102]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[103]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[104]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[105]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[106]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[107]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[108]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[109]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[10]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[110]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[111]/CLR,
+rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/M0_out_reg[112]/CLR (the first 15 of 799 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+
