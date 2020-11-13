@@ -48,14 +48,16 @@ architecture expBehave of exp_control is
 	
 	signal reset_n_exp : std_logic := '0';
 
-	signal e_count, e_count_nxt : integer range 0 to 256:= 0;
-    signal multiplier_count, multiplier_count_nxt : integer range 0 to 256 := 0;
+	signal e_count, e_count_nxt : integer:= 0;
+    signal multiplier_count, multiplier_count_nxt : integer := 0;
     
-	type state_type is (wait_in, init, incr, calc, multiply, wait_out);
+	type state_type is (wait_in, init, start_exp, incr, calc, multiply, wait_out, wait_for_settle_out);
 	signal state   : state_type;
 	signal next_state : state_type;
 	signal first_step_mult_nxt : std_logic := '0';
 	signal last_msg, last_msg_nxt : std_logic := '0';
+	signal exp_enable_nxt : std_logic := '0';
+	signal load_msg_nxt : std_logic := '0';
 begin
 
 	next_state_seqv : process (clk, reset_n_in)
@@ -74,14 +76,16 @@ begin
 				next_state <= wait_in;
 			when wait_in=>
 				if valid_in = '1' then
-					next_state <= calc;
+					next_state <= start_exp;
 				else
 					next_state <= wait_in;
 				end if;
+			when start_exp=>
+				next_state <= calc;
 			when incr=>
 				next_state <= calc;
 			when calc=>
-				if e_count >= C_BLOCK_SIZE then
+				if e_count >= C_BLOCK_SIZE + 1 then
 					next_state <= wait_out;
 				else
 					next_state <= multiply;
@@ -94,10 +98,12 @@ begin
 				end if;
 			when wait_out=>
 				if ready_out = '1' then
-					next_state <= init;
+					next_state <= wait_for_settle_out;
 				else
 					next_state <= wait_out;
 				end if;
+			when wait_for_settle_out =>
+				next_state <= init;	
 			when others =>
 				next_state <= init;
 		end case;
@@ -107,8 +113,8 @@ begin
 		ready_in <= '0';
 		valid_out <= '0';
 		reset_n_exp <= '1';
-		exp_enable <= '0';
-		load_msg <= '0';
+		exp_enable_nxt <= '0';
+		load_msg_nxt <= '1';
 		last_msg_nxt <= last_msg;
 		e_count_nxt <= e_count;
 		multiplier_count_nxt <= 0;
@@ -120,16 +126,16 @@ begin
 			when wait_in=>
 				ready_in <= '1';
 				if valid_in = '1' then
+					load_msg_nxt <= '0';
 					last_msg_nxt <= last_in;
 				end if;
 			when incr=>
 				e_count_nxt <= e_count + 1;
-				
+				exp_enable_nxt <= '1';
+			when start_exp=>
+				exp_enable_nxt <= '1';	
 			when calc=>
 				first_step_mult_nxt <= '1';
-				if e_count < C_BLOCK_SIZE then
-					exp_enable <= '1';
-				end if;
 			when multiply=>
 				multiplier_count_nxt <= multiplier_count + 1;
 			when wait_out=>
@@ -146,11 +152,15 @@ begin
 			first_step_mult <= '0';
 			e_count <= 0;
 			multiplier_count <= 0;
+			exp_enable <= '0';
+			load_msg <= '1';
 		elsif rising_edge(clk) then
 			last_msg <= last_msg_nxt;
 			first_step_mult <= first_step_mult_nxt;
 			multiplier_count <= multiplier_count_nxt;
 			e_count <= e_count_nxt;
+			load_msg <= load_msg_nxt;
+			exp_enable <= exp_enable_nxt;
 		end if;
 	end process;
 
@@ -159,7 +169,7 @@ begin
 		if reset_n = '0' then
 			e_i <= '0';
         elsif rising_edge(clk) and (exp_enable = '1') then
-            if (e_count < C_BLOCK_SIZE - 1) then
+            if (e_count < C_BLOCK_SIZE) then
                 e_i <= key_e_d (e_count);
             else
                 e_i <= '0';
@@ -170,13 +180,13 @@ begin
 	--sends out mux signals for mux1 and mux2
     mux_signals : process(e_count)
     begin
-        if e_count > 0 then
+        if e_count > 1 then
             mux_in_msg <= '0';
         else
             mux_in_msg <= '1';
         end if;
 
-        if e_count > 1 then
+        if e_count > 2 then
             mux_in_one <= '0';
         else
             mux_in_one <= '1';

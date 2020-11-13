@@ -17,8 +17,7 @@ entity Multiplier is
 		reset_n : in std_logic;
 		first_step : in std_logic;
 		--output
-		P : out std_logic_vector (BUS_WIDTH - 1  downto 0);
-		READY : out std_logic := '0'
+		P : out std_logic_vector (BUS_WIDTH - 1  downto 0)
 	);
 end Multiplier;
 
@@ -37,13 +36,12 @@ architecture behaviour of Multiplier is
 	signal mux2 : std_logic_vector (BUS_WIDTH - 1  downto 0);
 begin
 	
-	--Shift register for b_i, and counter for READY signal
+	--Shift register for b_i
 	b_reg : process(CLK, reset_n, B, b_count)
 	begin
 		if reset_n = '0' then
 			b_i <= '0';
 			b_count <= BUS_WIDTH;
-			READY <= '0';
 		elsif rising_edge(CLK) then
 			if first_step = '0' then
 				--Increments b_i if counter is above 1
@@ -54,15 +52,10 @@ begin
 				end if;
 				b_count <= b_count - 1;
 				
-				--Sends out READY signal when counter is done
 				if b_count <= -1 then
-					READY <= '1';
 					b_count <= BUS_WIDTH;
-				else
-					READY <= '0';
 				end if;
 			else
-				READY <= '0';
 				b_i <= '0';
 				b_count <= BUS_WIDTH;
 			end if;
