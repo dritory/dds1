@@ -24,7 +24,7 @@ entity rsa_core is
 	generic (
 		-- Users to add parameters here
 		C_BLOCK_SIZE          : integer := 256;
-		CORE_COUNT				  : integer := 2
+		C_CORE_COUNT		  : integer := 10
 	);
 	port (
 		-----------------------------------------------------------------------------
@@ -67,31 +67,33 @@ entity rsa_core is
 	);
 end rsa_core;
 
-architecture rtl of rsa_core is
 
-	type ARRAY_OF_SIGNAL_VECTOR is array (CORE_COUNT - 1 downto 0) of std_logic_vector(C_BLOCK_SIZE-1 downto 0);
+architecture rtl_cores of rsa_core is
+
+	type ARRAY_OF_SIGNAL_VECTOR is array (C_CORE_COUNT - 1 downto 0) of std_logic_vector(C_BLOCK_SIZE-1 downto 0);
 
 	signal MSOUT_ARRAY : ARRAY_OF_SIGNAL_VECTOR;
-	signal VALID_IN_ARRAY : std_logic_vector(CORE_COUNT - 1 downto 0);
-	signal READY_IN_ARRAY :  std_logic_vector(CORE_COUNT- 1 downto 0);
-	signal VALID_OUT_ARRAY : std_logic_vector(CORE_COUNT- 1 downto 0);
-	signal READY_OUT_ARRAY : std_logic_vector(CORE_COUNT- 1 downto 0);
+	signal VALID_IN_ARRAY : std_logic_vector(C_CORE_COUNT - 1 downto 0);
+	signal READY_IN_ARRAY :  std_logic_vector(C_CORE_COUNT- 1 downto 0);
+	signal VALID_OUT_ARRAY : std_logic_vector(C_CORE_COUNT- 1 downto 0);
+	signal LAST_OUT_ARRAY : std_logic_vector(C_CORE_COUNT- 1 downto 0);
+	signal READY_OUT_ARRAY : std_logic_vector(C_CORE_COUNT- 1 downto 0);
 
-	signal core_out : integer range 0 to CORE_COUNT - 1;
-	signal core_out_nxt : integer range 0 to CORE_COUNT - 1;
+	signal core_out : integer range 0 to C_CORE_COUNT - 1;
+	signal core_out_nxt : integer range 0 to C_CORE_COUNT - 1;
 
-	signal core_in : integer range 0 to CORE_COUNT - 1;
-	signal core_in_nxt : integer range 0 to CORE_COUNT - 1;
+	signal core_in : integer range 0 to C_CORE_COUNT - 1;
+	signal core_in_nxt : integer range 0 to C_CORE_COUNT - 1;
 
-	type output_state_type is (WAIT_OUT, WRITE_OUT);
+	type output_state_type is (WAIT_OUT, WRITE_OUT,WRITE_SETTLE_OUT);
 	signal output_state, output_state_next : output_state_type;
 
 	type input_state_type is (WAIT_IN, START_CORE, INIT_CORE);
 	signal input_state, input_state_next : input_state_type;
-
+	
 
 	begin
-		GEN_CORES : for I in 0 to CORE_COUNT - 1 generate
+		GEN_CORES : for I in 0 to C_CORE_COUNT - 1 generate
 				i_exponentiation : entity work.exponentiation
 				generic map (
 					C_block_size => C_BLOCK_SIZE
@@ -101,8 +103,10 @@ architecture rtl of rsa_core is
 					key_e_d   => key_e_d     ,
 					valid_in  => VALID_IN_ARRAY(I) ,
 					ready_in  => READY_IN_ARRAY(I),
+					last_in   => msgin_last,
 					ready_out => READY_OUT_ARRAY(I),
 					valid_out => VALID_OUT_ARRAY(I),
+					last_out  => LAST_OUT_ARRAY(I),
 					result    => MSOUT_ARRAY(I),
 					key_n     => key_n       ,
 					clk       => clk         ,
@@ -140,7 +144,7 @@ architecture rtl of rsa_core is
 					VALID_IN_ARRAY(core_in) <= '1';
 					if(READY_IN_ARRAY(core_in) = '1') then
 						msgin_ready <= '1';
-						if core_in >= CORE_COUNT -1 then
+						if core_in >= C_CORE_COUNT -1 then
 							core_in_nxt <= 0;
 						else
 							core_in_nxt <= core_in +1;
@@ -173,6 +177,7 @@ architecture rtl of rsa_core is
 			READY_OUT_ARRAY <=  (others => '0');
 			core_out_nxt <= core_out;
 			msgout_valid <= '0';
+			msgout_last <= '0';
 			case output_state is
 				when WAIT_OUT=>
 					if (VALID_OUT_ARRAY(core_out) = '1') then
@@ -183,27 +188,53 @@ architecture rtl of rsa_core is
 				when WRITE_OUT=>
 					if(msgout_ready = '1') then
 						READY_OUT_ARRAY(core_out) <= '1';
+						msgout_last <= LAST_OUT_ARRAY(core_out);
 						msgout_data <= MSOUT_ARRAY(core_out);
 						msgout_valid <= '1';
 
-						if core_out >= CORE_COUNT -1 then
+						if core_out >= C_CORE_COUNT -1 then
 							core_out_nxt <= 0;
 						else
 							core_out_nxt <= core_out +1;
 						end if;
 
-						output_state_next <= WAIT_OUT;
+						output_state_next <= WRITE_SETTLE_OUT;
 					else
 						output_state_next <= WRITE_OUT;
 					end if;
-					
+				when WRITE_SETTLE_OUT=>
+					msgout_data <= MSOUT_ARRAY(core_out);
+					output_state_next <= WAIT_OUT;	
 				when others =>
 					output_state_next <= WAIT_OUT;
 			end case;
 		end process ; -- output_control
 
-
-
-		msgout_last  <= msgin_last;
 		rsa_status   <= (others => '0');
+	end rtl_cores;
+
+	architecture rtl of rsa_core is
+
+		begin
+			i_exponentiation : entity work.exponentiation
+				generic map (
+					C_block_size => C_BLOCK_SIZE
+				)
+				port map (
+					message   => msgin_data  ,
+					key_e_d   => key_e_d     ,
+					valid_in  => msgin_valid ,
+					ready_in  => msgin_ready ,
+					last_in	  => msgin_last  ,
+					ready_out => msgout_ready,
+					valid_out => msgout_valid,
+					last_out  => msgout_last ,
+					result    => msgout_data ,
+					key_n     => key_n       ,
+					clk       => clk         ,
+					reset_n   => reset_n
+				);
+			rsa_status   <= (others => '0');
 	end rtl;
+		
+	

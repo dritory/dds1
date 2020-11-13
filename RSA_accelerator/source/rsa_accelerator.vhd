@@ -191,7 +191,7 @@ u_rsa_msgout : entity work.rsa_msgout
 		msgout_last            => msgout_last
 	);
 
-u_rsa_core : entity work.rsa_core
+u_rsa_core : entity work.rsa_core(rtl_cores)
 	generic map (
 		C_BLOCK_SIZE => C_BLOCK_SIZE
 	)

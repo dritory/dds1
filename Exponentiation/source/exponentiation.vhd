@@ -57,7 +57,8 @@ architecture expBehave of exponentiation is
 	
 	signal mux_in_msg : std_logic;
 	signal mux_in_one : std_logic;
-	
+	signal load_msg : std_logic;
+
 	signal mN : std_logic_vector (C_BLOCK_SIZE - 1 + 2 downto 0);
 	signal m2N : std_logic_vector (C_BLOCK_SIZE - 1 + 2  downto 0) ; 
 
@@ -84,7 +85,7 @@ begin
 				first_step_mult => first_step_mult,
 				mux_in_msg => mux_in_msg,
 				mux_in_one => mux_in_one,
-				
+				load_msg => load_msg,
 				--ouput control
 				ready_out	=> ready_out,
 				valid_out	=> valid_out,
@@ -128,11 +129,11 @@ begin
 	end process;
 
 	--register M0 storing incoming message value
-	m0_reg : process(clk, reset, M0_nxt)
+	m0_reg : process(clk, reset,load_msg, M0_nxt)
 	begin	
 		if reset = '0' then
 			M0_out <= (others => '0');
-		elsif rising_edge(clk) and (valid_in = '1')then
+		elsif rising_edge(clk) and (load_msg = '1') then
 			M0_out <= M0_nxt;
 		end if;
 	end process;
