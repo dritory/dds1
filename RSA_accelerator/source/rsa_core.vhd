@@ -141,8 +141,8 @@ architecture rtl_cores of rsa_core is
 				when INIT_CORE=>
 					input_state_next <= WAIT_IN;	
 				when START_CORE=>
-					VALID_IN_ARRAY(core_in) <= '1';
 					if(READY_IN_ARRAY(core_in) = '1') then
+						VALID_IN_ARRAY(core_in) <= '1';
 						msgin_ready <= '1';
 						if core_in >= C_CORE_COUNT -1 then
 							core_in_nxt <= 0;
@@ -191,18 +191,17 @@ architecture rtl_cores of rsa_core is
 						msgout_last <= LAST_OUT_ARRAY(core_out);
 						msgout_data <= MSOUT_ARRAY(core_out);
 						msgout_valid <= '1';
-
-						if core_out >= C_CORE_COUNT -1 then
-							core_out_nxt <= 0;
-						else
-							core_out_nxt <= core_out +1;
-						end if;
-
 						output_state_next <= WRITE_SETTLE_OUT;
 					else
 						output_state_next <= WRITE_OUT;
 					end if;
 				when WRITE_SETTLE_OUT=>
+				
+					if core_out >= C_CORE_COUNT -1 then
+						core_out_nxt <= 0;
+					else
+						core_out_nxt <= core_out +1;
+					end if;
 					msgout_data <= MSOUT_ARRAY(core_out);
 					output_state_next <= WAIT_OUT;	
 				when others =>
@@ -213,28 +212,28 @@ architecture rtl_cores of rsa_core is
 		rsa_status   <= (others => '0');
 	end rtl_cores;
 
-	architecture rtl of rsa_core is
+	-- architecture rtl of rsa_core is
 
-		begin
-			i_exponentiation : entity work.exponentiation
-				generic map (
-					C_block_size => C_BLOCK_SIZE
-				)
-				port map (
-					message   => msgin_data  ,
-					key_e_d   => key_e_d     ,
-					valid_in  => msgin_valid ,
-					ready_in  => msgin_ready ,
-					last_in	  => msgin_last  ,
-					ready_out => msgout_ready,
-					valid_out => msgout_valid,
-					last_out  => msgout_last ,
-					result    => msgout_data ,
-					key_n     => key_n       ,
-					clk       => clk         ,
-					reset_n   => reset_n
-				);
-			rsa_status   <= (others => '0');
-	end rtl;
+	-- 	begin
+	-- 		i_exponentiation : entity work.exponentiation
+	-- 			generic map (
+	-- 				C_block_size => C_BLOCK_SIZE
+	-- 			)
+	-- 			port map (
+	-- 				message   => msgin_data  ,
+	-- 				key_e_d   => key_e_d     ,
+	-- 				valid_in  => msgin_valid ,
+	-- 				ready_in  => msgin_ready ,
+	-- 				last_in	  => msgin_last  ,
+	-- 				ready_out => msgout_ready,
+	-- 				valid_out => msgout_valid,
+	-- 				last_out  => msgout_last ,
+	-- 				result    => msgout_data ,
+	-- 				key_n     => key_n       ,
+	-- 				clk       => clk         ,
+	-- 				reset_n   => reset_n
+	-- 			);
+	-- 		rsa_status   <= (others => '0');
+	-- end rtl;
 		
 	

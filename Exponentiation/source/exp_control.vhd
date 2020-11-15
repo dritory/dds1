@@ -51,8 +51,8 @@ architecture expBehave of exp_control is
 	signal e_count, e_count_nxt : integer:= 0;
     signal multiplier_count, multiplier_count_nxt : integer := 0;
     
-	type state_type is (wait_in, init, start_exp, incr, calc, multiply, wait_out, wait_for_settle_out);
-	signal state   : state_type;
+	type state_type is (init, wait_in, start_exp, incr, calc, multiply, wait_out, wait_for_settle_out);
+	signal state   : state_type := init;
 	signal next_state : state_type;
 	signal first_step_mult_nxt : std_logic := '0';
 	signal last_msg, last_msg_nxt : std_logic := '0';
@@ -114,7 +114,7 @@ begin
 		valid_out <= '0';
 		reset_n_exp <= '1';
 		exp_enable_nxt <= '0';
-		load_msg_nxt <= '1';
+		load_msg_nxt <= '0';
 		last_msg_nxt <= last_msg;
 		e_count_nxt <= e_count;
 		multiplier_count_nxt <= 0;
@@ -123,8 +123,10 @@ begin
 			when init=>
 				reset_n_exp <= '0';
 				e_count_nxt <= 0;
+				load_msg_nxt <= '1';
 			when wait_in=>
 				ready_in <= '1';
+				load_msg_nxt <= '1';
 				if valid_in = '1' then
 					load_msg_nxt <= '0';
 					last_msg_nxt <= last_in;
@@ -153,7 +155,7 @@ begin
 			e_count <= 0;
 			multiplier_count <= 0;
 			exp_enable <= '0';
-			load_msg <= '1';
+			load_msg <= '0';
 		elsif rising_edge(clk) then
 			last_msg <= last_msg_nxt;
 			first_step_mult <= first_step_mult_nxt;
@@ -169,7 +171,7 @@ begin
 		if reset_n = '0' then
 			e_i <= '0';
         elsif rising_edge(clk) and (exp_enable = '1') then
-            if (e_count < C_BLOCK_SIZE) then
+            if (e_count < C_BLOCK_SIZE ) then
                 e_i <= key_e_d (e_count);
             else
                 e_i <= '0';
@@ -180,13 +182,13 @@ begin
 	--sends out mux signals for mux1 and mux2
     mux_signals : process(e_count)
     begin
-        if e_count > 1 then
+        if e_count > 0 then
             mux_in_msg <= '0';
         else
             mux_in_msg <= '1';
         end if;
 
-        if e_count > 2 then
+        if e_count > 1 then
             mux_in_one <= '0';
         else
             mux_in_one <= '1';
