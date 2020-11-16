@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Wed Nov 11 11:25:45 2020
-# Process ID: 2964
+# Start of session at: Mon Nov 16 11:20:19 2020
+# Process ID: 3720
 # Current directory: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1
 # Command line: vivado.exe -log rsa_soc_rst_ps7_0_100M_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rsa_soc_rst_ps7_0_100M_0.tcl
 # Log file: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1/rsa_soc_rst_ps7_0_100M_0.vds
@@ -20,9 +20,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3024
+INFO: [Synth 8-7075] Helper process launched with PID 6652
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1012.391 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1001.555 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'rsa_soc_rst_ps7_0_100M_0' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/synth/rsa_soc_rst_ps7_0_100M_0.vhd:74]
 	Parameter C_FAMILY bound to: zynq - type: string 
@@ -108,18 +108,18 @@ INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (5#1) [f:/Onedrive/N
 INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (6#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
 INFO: [Synth 8-256] done synthesizing module 'rsa_soc_rst_ps7_0_100M_0' (7#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/synth/rsa_soc_rst_ps7_0_100M_0.vhd:74]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:20 . Memory (MB): peak = 1012.391 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:17 . Memory (MB): peak = 1001.555 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:21 . Memory (MB): peak = 1012.391 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1001.555 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:21 . Memory (MB): peak = 1012.391 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1001.555 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1012.391 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1001.555 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -136,32 +136,32 @@ Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst
 Finished Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1028.059 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1001.555 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 13 instances were transformed.
   FDR => FDRE: 12 instances
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.709 . Memory (MB): peak = 1034.141 ; gain = 6.082
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:01 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:44 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:39 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:44 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:39 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for U0. (constraint file  F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:44 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:44 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:53 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -192,25 +192,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:48 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:01:03 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:01:05 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:01:24 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:01:05 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:01:24 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:01:05 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:01:24 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -228,37 +228,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:01:31 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:01:31 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:01:31 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:01:31 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:01:31 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:01:32 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -286,18 +286,18 @@ Report Cell Usage:
 |10    |FDSE  |     4|
 +------+------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:01:32 . Memory (MB): peak = 1008.445 ; gain = 6.891
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:59 . Memory (MB): peak = 1034.141 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:01:10 . Memory (MB): peak = 1034.141 ; gain = 21.750
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:01:23 . Memory (MB): peak = 1008.445 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:01:32 . Memory (MB): peak = 1008.445 ; gain = 6.891
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1034.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1008.445 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1034.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1025.059 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 9 instances were transformed.
   FDR => FDRE: 8 instances
@@ -306,11 +306,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 46 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:01:33 . Memory (MB): peak = 1034.141 ; gain = 21.750
+synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:01:49 . Memory (MB): peak = 1025.059 ; gain = 23.504
 INFO: [Common 17-1381] The checkpoint 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1/rsa_soc_rst_ps7_0_100M_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
 INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rsa_soc_rst_ps7_0_100M_0, cache-ID = 721a6558b83e7ed6
 INFO: [Coretcl 2-1174] Renamed 6 cell refs.
 INFO: [Common 17-1381] The checkpoint 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rst_ps7_0_100M_0_synth_1/rsa_soc_rst_ps7_0_100M_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file rsa_soc_rst_ps7_0_100M_0_utilization_synth.rpt -pb rsa_soc_rst_ps7_0_100M_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 11 11:27:31 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 16 11:22:20 2020...

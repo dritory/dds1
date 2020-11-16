@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Wed Nov 11 11:25:16 2020
-# Process ID: 20272
+# Start of session at: Mon Nov 16 11:20:12 2020
+# Process ID: 2584
 # Current directory: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1
 # Command line: vivado.exe -log rsa_soc_rsa_acc_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rsa_soc_rsa_acc_0.tcl
 # Log file: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1/rsa_soc_rsa_acc_0.vds
@@ -20,9 +20,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 9292
+INFO: [Synth 8-7075] Helper process launched with PID 12584
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1031.844 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:14 . Memory (MB): peak = 997.332 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_acc_0' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/synth/rsa_soc_rsa_acc_0.vhd:92]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
@@ -31,58 +31,63 @@ INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_acc_0' [f:/Onedrive/NTNU/dd
 	Parameter C_S00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_M00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_M00_AXIS_START_COUNT bound to: 32 - type: integer 
-INFO: [Synth 8-3491] module 'rsa_accelerator' declared at 'f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_accelerator.vhd:16' bound to instance 'U0' of component 'RSA_accelerator' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/synth/rsa_soc_rsa_acc_0.vhd:186]
-INFO: [Synth 8-638] synthesizing module 'rsa_accelerator' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_accelerator.vhd:84]
+INFO: [Synth 8-3491] module 'rsa_accelerator' declared at 'f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_accelerator.vhd:16' bound to instance 'U0' of component 'RSA_accelerator' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/synth/rsa_soc_rsa_acc_0.vhd:186]
+INFO: [Synth 8-638] synthesizing module 'rsa_accelerator' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_accelerator.vhd:84]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
 	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_S00_AXI_ADDR_WIDTH bound to: 8 - type: integer 
 	Parameter C_S00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_M00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_M00_AXIS_START_COUNT bound to: 32 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'rsa_regio' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_regio.vhd:115]
+INFO: [Synth 8-638] synthesizing module 'rsa_regio' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_regio.vhd:115]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
 	Parameter C_register_count bound to: 33 - type: integer 
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'rsa_regio' (1#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_regio.vhd:115]
-INFO: [Synth 8-638] synthesizing module 'rsa_msgin' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_msgin.vhd:69]
+INFO: [Synth 8-256] done synthesizing module 'rsa_regio' (1#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_regio.vhd:115]
+INFO: [Synth 8-638] synthesizing module 'rsa_msgin' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_msgin.vhd:69]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
 	Parameter C_S_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'rsa_msgin' (2#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_msgin.vhd:69]
-INFO: [Synth 8-638] synthesizing module 'rsa_msgout' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_msgout.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'rsa_msgin' (2#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_msgin.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'rsa_msgout' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_msgout.vhd:61]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
 	Parameter C_M_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_M_START_COUNT bound to: 32 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'rsa_msgout' (3#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_msgout.vhd:61]
-INFO: [Synth 8-638] synthesizing module 'rsa_core' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_core.vhd:68]
+INFO: [Synth 8-256] done synthesizing module 'rsa_msgout' (3#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_msgout.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'rsa_core' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:71]
 	Parameter C_BLOCK_SIZE bound to: 256 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'exponentiation' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exponentiation.vhd:38]
+	Parameter C_CORE_COUNT bound to: 10 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'exponentiation' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exponentiation.vhd:38]
 	Parameter C_block_size bound to: 256 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'exp_control' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exp_control.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'exp_control' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exp_control.vhd:47]
 	Parameter C_block_size bound to: 256 - type: integer 
-WARNING: [Synth 8-614] signal 'reset_n' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exp_control.vhd:157]
-INFO: [Synth 8-256] done synthesizing module 'exp_control' (4#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exp_control.vhd:47]
-WARNING: [Synth 8-614] signal 'valid_in' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exponentiation.vhd:131]
-INFO: [Synth 8-638] synthesizing module 'Multiplier' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/Multiplier.vhd:26]
+INFO: [Synth 8-226] default block is never used [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exp_control.vhd:74]
+WARNING: [Synth 8-614] signal 'reset_n' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exp_control.vhd:169]
+INFO: [Synth 8-256] done synthesizing module 'exp_control' (4#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exp_control.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'Multiplier' [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/Multiplier.vhd:25]
 	Parameter BUS_WIDTH bound to: 256 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Multiplier' (5#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/Multiplier.vhd:26]
-INFO: [Synth 8-256] done synthesizing module 'exponentiation' (6#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/exponentiation.vhd:38]
-INFO: [Synth 8-256] done synthesizing module 'rsa_core' (7#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_core.vhd:68]
-INFO: [Synth 8-256] done synthesizing module 'rsa_accelerator' (8#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/0bc8/src/rsa_accelerator.vhd:84]
+INFO: [Synth 8-256] done synthesizing module 'Multiplier' (5#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/Multiplier.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'exponentiation' (6#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/exponentiation.vhd:38]
+WARNING: [Synth 8-614] signal 'core_in' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:129]
+WARNING: [Synth 8-614] signal 'core_out' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:174]
+WARNING: [Synth 8-614] signal 'LAST_OUT_ARRAY' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:174]
+WARNING: [Synth 8-614] signal 'MSOUT_ARRAY' is read in the process but is not in the sensitivity list [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:174]
+INFO: [Synth 8-256] done synthesizing module 'rsa_core' (7#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_core.vhd:71]
+INFO: [Synth 8-256] done synthesizing module 'rsa_accelerator' (8#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ipshared/08d2/src/rsa_accelerator.vhd:84]
 INFO: [Synth 8-256] done synthesizing module 'rsa_soc_rsa_acc_0' (9#1) [f:/Onedrive/NTNU/dds1/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/synth/rsa_soc_rsa_acc_0.vhd:92]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1037.285 ; gain = 5.441
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:23 . Memory (MB): peak = 1039.660 ; gain = 42.328
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1037.285 ; gain = 5.441
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:24 . Memory (MB): peak = 1039.660 ; gain = 42.328
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1037.285 ; gain = 5.441
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:24 . Memory (MB): peak = 1039.660 ; gain = 42.328
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.311 . Memory (MB): peak = 1037.285 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.621 . Memory (MB): peak = 1039.660 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -93,71 +98,93 @@ Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa
 Finished Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1071.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1106.277 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1071.902 ; gain = 0.875
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1123.836 ; gain = 17.559
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:57 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:01:04 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:57 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:01:04 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for U0. (constraint file  F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:57 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:01:04 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'exp_control'
+INFO: [Synth 8-802] inferred FSM for state register 'input_state_reg' in module 'rsa_core'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                 wait_in |                           000001 |                              000
-                    calc |                           000010 |                              011
-                wait_out |                           000100 |                              101
-                    init |                           001000 |                              001
-                multiply |                           010000 |                              100
-                    incr |                           100000 |                              010
+                 wait_in |                              000 |                              001
+               start_exp |                              001 |                              010
+                    calc |                              010 |                              100
+                wait_out |                              011 |                              110
+     wait_for_settle_out |                              100 |                              111
+                    init |                              101 |                              000
+                multiply |                              110 |                              101
+                    incr |                              111 |                              011
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'exp_control'
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'exp_control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 wait_in |                               00 |                               00
+              start_core |                               01 |                               01
+               init_core |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'input_state_reg' using encoding 'sequential' in module 'rsa_core'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:59 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:01:07 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input  258 Bit       Adders := 4     
-	   2 Input  257 Bit       Adders := 2     
-	   2 Input    9 Bit       Adders := 6     
+	   2 Input  258 Bit       Adders := 40    
+	   2 Input  257 Bit       Adders := 20    
+	   2 Input   32 Bit       Adders := 20    
+	   2 Input    9 Bit       Adders := 40    
+	   2 Input    4 Bit       Adders := 2     
 +---Registers : 
-	              256 Bit    Registers := 6     
-	               32 Bit    Registers := 42    
-	                9 Bit    Registers := 4     
+	              256 Bit    Registers := 51    
+	               32 Bit    Registers := 62    
+	                9 Bit    Registers := 20    
 	                8 Bit    Registers := 5     
-	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 12    
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 57    
 +---Muxes : 
-	   4 Input  256 Bit        Muxes := 1     
-	   2 Input  256 Bit        Muxes := 7     
+	   2 Input  256 Bit        Muxes := 71    
+	   4 Input  256 Bit        Muxes := 2     
+	   8 Input   32 Bit        Muxes := 20    
 	   2 Input   32 Bit        Muxes := 33    
-	   6 Input    9 Bit        Muxes := 2     
-	   2 Input    9 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 2     
+	   3 Input   10 Bit        Muxes := 1     
+	   4 Input   10 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 20    
 	   2 Input    8 Bit        Muxes := 160   
 	   4 Input    8 Bit        Muxes := 3     
-	   6 Input    6 Bit        Muxes := 1     
-	   2 Input    6 Bit        Muxes := 4     
-	   2 Input    1 Bit        Muxes := 8     
-	   4 Input    1 Bit        Muxes := 3     
-	   6 Input    1 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 2     
+	   8 Input    3 Bit        Muxes := 10    
+	   2 Input    3 Bit        Muxes := 40    
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   5 Input    2 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 80    
+	   2 Input    1 Bit        Muxes := 35    
+	   3 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -174,25 +201,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:01:42 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:02:12 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:54 ; elapsed = 00:01:54 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:07 ; elapsed = 00:02:22 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:01:55 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:02:22 . Memory (MB): peak = 1123.836 ; gain = 126.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:01:58 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Technology Mapping : Time (s): cpu = 00:01:13 ; elapsed = 00:02:28 . Memory (MB): peak = 1133.945 ; gain = 136.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -210,37 +237,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:02:03 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished IO Insertion : Time (s): cpu = 00:01:22 ; elapsed = 00:02:37 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:02:03 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:22 ; elapsed = 00:02:37 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:02 ; elapsed = 00:02:03 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:29 ; elapsed = 00:02:44 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:02 ; elapsed = 00:02:03 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:29 ; elapsed = 00:02:45 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:02:05 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:34 ; elapsed = 00:02:50 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:02:05 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:35 ; elapsed = 00:02:50 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -256,44 +283,50 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |CARRY4 |   659|
-|2     |LUT1   |   256|
-|3     |LUT2   |  1290|
-|4     |LUT3   |  1319|
-|5     |LUT4   |   407|
-|6     |LUT5   |   827|
-|7     |LUT6   |  1862|
-|8     |MUXF7  |   230|
-|9     |MUXF8  |    77|
-|10    |FDCE   |  1877|
-|11    |FDPE   |     3|
+|1     |CARRY4 |  6960|
+|2     |LUT1   |  2551|
+|3     |LUT2   | 14545|
+|4     |LUT3   | 13259|
+|5     |LUT4   |  4292|
+|6     |LUT5   |  8008|
+|7     |LUT6   | 13333|
+|8     |MUXF7  |  1150|
+|9     |MUXF8  |   482|
+|10    |FDCE   | 14383|
+|11    |FDPE   |    20|
 |12    |FDRE   |  1067|
 |13    |FDSE   |     8|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:02:05 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:35 ; elapsed = 00:02:50 . Memory (MB): peak = 1181.531 ; gain = 184.199
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:52 ; elapsed = 00:01:30 . Memory (MB): peak = 1071.902 ; gain = 5.441
-Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:02:06 . Memory (MB): peak = 1071.902 ; gain = 40.059
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:19 ; elapsed = 00:02:38 . Memory (MB): peak = 1181.531 ; gain = 100.023
+Synthesis Optimization Complete : Time (s): cpu = 00:01:35 ; elapsed = 00:02:50 . Memory (MB): peak = 1181.531 ; gain = 184.199
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.217 . Memory (MB): peak = 1071.902 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 966 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1191.738 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8592 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1071.902 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1340.551 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-38 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+41 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:11 ; elapsed = 00:02:21 . Memory (MB): peak = 1071.902 ; gain = 40.059
+synth_design: Time (s): cpu = 00:02:01 ; elapsed = 00:03:26 . Memory (MB): peak = 1340.551 ; gain = 343.219
 INFO: [Common 17-1381] The checkpoint 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1/rsa_soc_rsa_acc_0.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 1340.551 ; gain = 0.000
+write_verilog: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1340.551 ; gain = 0.000
+write_vhdl: Time (s): cpu = 00:00:52 ; elapsed = 00:00:52 . Memory (MB): peak = 1340.551 ; gain = 0.000
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rsa_soc_rsa_acc_0, cache-ID = 30983a40aaa6a815
-INFO: [Coretcl 2-1174] Renamed 9 cell refs.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rsa_soc_rsa_acc_0, cache-ID = 968f0c491a803399
+INFO: [Coretcl 2-1174] Renamed 45 cell refs.
 INFO: [Common 17-1381] The checkpoint 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/rsa_soc_rsa_acc_0_synth_1/rsa_soc_rsa_acc_0.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 1340.551 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file rsa_soc_rsa_acc_0_utilization_synth.rpt -pb rsa_soc_rsa_acc_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 11 11:27:52 2020...
+write_verilog: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1340.551 ; gain = 0.000
+write_vhdl: Time (s): cpu = 00:00:52 ; elapsed = 00:00:53 . Memory (MB): peak = 1340.551 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 16 11:26:10 2020...

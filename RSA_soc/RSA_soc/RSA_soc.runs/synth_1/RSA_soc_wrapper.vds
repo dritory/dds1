@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Wed Nov 11 11:29:31 2020
-# Process ID: 3176
+# Start of session at: Mon Nov 16 11:26:21 2020
+# Process ID: 9204
 # Current directory: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1
 # Command line: vivado.exe -log RSA_soc_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RSA_soc_wrapper.tcl
 # Log file: F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/RSA_soc_wrapper.vds
@@ -13,8 +13,7 @@ source RSA_soc_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'f:/Onedrive/NTNU/dds1/RSA_accelerator/IP'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Xilinx/Vivado/2020.1/data/ip'.
-update_ip_catalog: Time (s): cpu = 00:00:00 ; elapsed = 00:00:11 . Memory (MB): peak = 1002.672 ; gain = 0.000
-add_files: Time (s): cpu = 00:00:05 ; elapsed = 00:00:26 . Memory (MB): peak = 1002.672 ; gain = 0.000
+add_files: Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1031.758 ; gain = 0.000
 Command: synth_design -top RSA_soc_wrapper -part xc7z020clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -22,53 +21,53 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5956
+INFO: [Synth 8-7075] Helper process launched with PID 16196
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'rsa_soc_wrapper' [F:/Onedrive/NTNU/dds1/RSA_soc/source/rsa_soc.vhd:40]
 INFO: [Synth 8-3491] module 'rsa_soc' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1529' bound to instance 'rsa_soc_i' of component 'rsa_soc' [F:/Onedrive/NTNU/dds1/RSA_soc/source/rsa_soc.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'rsa_soc' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1559]
-INFO: [Synth 8-3491] module 'rsa_soc_axi_smc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'rsa_soc_axi_smc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1957]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_axi_smc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_axi_smc_0_stub.vhdl:79]
-INFO: [Synth 8-3491] module 'rsa_soc_processing_system7_0_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'rsa_soc_processing_system7_0_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:2028]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_processing_system7_0_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_processing_system7_0_0_stub.vhdl:121]
+INFO: [Synth 8-3491] module 'rsa_soc_axi_smc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'rsa_soc_axi_smc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1957]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_axi_smc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_axi_smc_0_stub.vhdl:79]
+INFO: [Synth 8-3491] module 'rsa_soc_processing_system7_0_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'rsa_soc_processing_system7_0_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:2028]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_processing_system7_0_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_processing_system7_0_0_stub.vhdl:121]
 INFO: [Synth 8-638] synthesizing module 'rsa_soc_ps7_0_axi_periph_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1049]
 INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_14CHQE2' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:55]
 INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_14CHQE2' (1#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:55]
 INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_6BTU3D' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:157]
 INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_6BTU3D' (2#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:157]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_6754QU' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:713]
-INFO: [Synth 8-3491] module 'rsa_soc_auto_pc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'rsa_soc_auto_pc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:896]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_auto_pc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_auto_pc_0_stub.vhdl:70]
+INFO: [Synth 8-3491] module 'rsa_soc_auto_pc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'rsa_soc_auto_pc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:896]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_auto_pc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_auto_pc_0_stub.vhdl:70]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_6754QU' (3#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:713]
-INFO: [Synth 8-3491] module 'rsa_soc_xbar_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'rsa_soc_xbar_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1462]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_xbar_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_xbar_0_stub.vhdl:51]
+INFO: [Synth 8-3491] module 'rsa_soc_xbar_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'rsa_soc_xbar_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1462]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_xbar_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_xbar_0_stub.vhdl:51]
 INFO: [Synth 8-256] done synthesizing module 'rsa_soc_ps7_0_axi_periph_0' (4#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1049]
 INFO: [Synth 8-638] synthesizing module 'rsa_imp_1WUMTU2' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:292]
-INFO: [Synth 8-3491] module 'rsa_soc_rsa_acc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rsa_acc_0_stub.vhdl:5' bound to instance 'rsa_acc' of component 'rsa_soc_rsa_acc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:542]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_acc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rsa_acc_0_stub.vhdl:42]
+INFO: [Synth 8-3491] module 'rsa_soc_rsa_acc_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rsa_acc_0_stub.vhdl:5' bound to instance 'rsa_acc' of component 'rsa_soc_rsa_acc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:542]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_acc_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rsa_acc_0_stub.vhdl:42]
 WARNING: [Synth 8-5640] Port 'axi_dma_tstvec' is missing in component declaration [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:293]
-INFO: [Synth 8-3491] module 'rsa_soc_rsa_dma_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rsa_dma_0_stub.vhdl:5' bound to instance 'rsa_dma' of component 'rsa_soc_rsa_dma_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:576]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_dma_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rsa_dma_0_stub.vhdl:75]
+INFO: [Synth 8-3491] module 'rsa_soc_rsa_dma_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rsa_dma_0_stub.vhdl:5' bound to instance 'rsa_dma' of component 'rsa_soc_rsa_dma_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:576]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_rsa_dma_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rsa_dma_0_stub.vhdl:75]
 INFO: [Synth 8-256] done synthesizing module 'rsa_imp_1WUMTU2' (5#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:292]
-INFO: [Synth 8-3491] module 'rsa_soc_rst_ps7_0_100M_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'rsa_soc_rst_ps7_0_100M_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:2294]
-INFO: [Synth 8-638] synthesizing module 'rsa_soc_rst_ps7_0_100M_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-3176-DESKTOP-H16983N/realtime/rsa_soc_rst_ps7_0_100M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'rsa_soc_rst_ps7_0_100M_0' declared at 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'rsa_soc_rst_ps7_0_100M_0' [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:2294]
+INFO: [Synth 8-638] synthesizing module 'rsa_soc_rst_ps7_0_100M_0' [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/.Xil/Vivado-9204-DESKTOP-H16983N/realtime/rsa_soc_rst_ps7_0_100M_0_stub.vhdl:21]
 INFO: [Synth 8-256] done synthesizing module 'rsa_soc' (6#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/boards/synth/rsa_soc.vhd:1559]
 INFO: [Synth 8-256] done synthesizing module 'rsa_soc_wrapper' (7#1599) [F:/Onedrive/NTNU/dds1/RSA_soc/source/rsa_soc.vhd:40]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1031.758 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -98,20 +97,20 @@ Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/don
 Finished Parsing XDC File [F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1031.758 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -386,10 +385,10 @@ Applied set_property DONT_TOUCH = true for rsa_soc_i/ps7_0_axi_periph. (constrai
 Applied set_property DONT_TOUCH = true for rsa_soc_i/ps7_0_axi_periph/xbar. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for rsa_soc_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -411,25 +410,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1002.672 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1007.324 ; gain = 4.652
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1007.398 ; gain = 4.727
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1027.020 ; gain = 24.348
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -447,37 +446,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -509,23 +508,23 @@ Report Cell Usage:
 |7     |rsa_soc_xbar_0_bbox                 |     1|
 +------+------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 1031.773 ; gain = 29.102
-Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 1031.773 ; gain = 29.102
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:28 . Memory (MB): peak = 1031.758 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1031.758 ; gain = 0.000
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 1031.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1031.758 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1048.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1049.484 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 44 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:39 . Memory (MB): peak = 1052.629 ; gain = 49.957
+synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:40 . Memory (MB): peak = 1054.535 ; gain = 22.777
 INFO: [Common 17-1381] The checkpoint 'F:/Onedrive/NTNU/dds1/RSA_soc/RSA_soc/RSA_soc.runs/synth_1/RSA_soc_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file RSA_soc_wrapper_utilization_synth.rpt -pb RSA_soc_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 11 11:31:00 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 16 11:27:31 2020...

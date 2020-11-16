@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Wed Nov 11 11:34:49 2020
+| Date             : Mon Nov 16 12:40:46 2020
 | Host             : DESKTOP-H16983N running 64-bit major release  (build 9200)
 | Command          : report_power -file RSA_soc_wrapper_power_routed.rpt -pb RSA_soc_wrapper_power_summary_routed.pb -rpx RSA_soc_wrapper_power_routed.rpx
 | Design           : rsa_soc_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.460        |
+| Total On-Chip Power (W)  | 2.083        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.325        |
-| Device Static (W)        | 0.136        |
+| Dynamic (W)              | 1.930        |
+| Device Static (W)        | 0.153        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 68.2         |
-| Junction Temperature (C) | 41.8         |
+| Max Ambient (C)          | 61.0         |
+| Junction Temperature (C) | 49.0         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.016 |        3 |       --- |             --- |
-| Slice Logic              |     0.022 |    21915 |       --- |             --- |
-|   LUT as Logic           |     0.019 |     8351 |     53200 |           15.70 |
-|   CARRY4                 |     0.002 |      765 |     13300 |            5.75 |
-|   Register               |    <0.001 |     8710 |    106400 |            8.19 |
+| Clocks                   |     0.041 |        3 |       --- |             --- |
+| Slice Logic              |     0.201 |    92156 |       --- |             --- |
+|   LUT as Logic           |     0.173 |    48149 |     53200 |           90.51 |
+|   CARRY4                 |     0.024 |     7066 |     13300 |           53.13 |
+|   Register               |     0.003 |    21233 |    106400 |           19.96 |
+|   F7/F8 Muxes            |    <0.001 |     1632 |     53200 |            3.07 |
 |   LUT as Distributed RAM |    <0.001 |      442 |     17400 |            2.54 |
 |   LUT as Shift Register  |    <0.001 |      192 |     17400 |            1.10 |
-|   F7/F8 Muxes            |    <0.001 |      307 |     53200 |            0.58 |
-|   Others                 |     0.000 |      566 |       --- |             --- |
-| Signals                  |     0.030 |    15120 |       --- |             --- |
+|   Others                 |     0.000 |      624 |       --- |             --- |
+| Signals                  |     0.432 |    64809 |       --- |             --- |
 | Block RAM                |    <0.001 |        2 |       140 |            1.43 |
 | PS7                      |     1.256 |        1 |       --- |             --- |
-| Static Power             |     0.136 |          |           |                 |
-| Total                    |     1.460 |          |           |                 |
+| Static Power             |     0.153 |          |           |                 |
+| Total                    |     2.083 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,8 +75,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.082 |       0.068 |      0.013 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.014 |       0.000 |      0.014 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.692 |       0.674 |      0.018 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.017 |       0.000 |      0.017 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -88,7 +88,7 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccpint   |       1.000 |     0.675 |       0.647 |      0.028 |       NA    | Unspecified | NA         |
+| Vccpint   |       1.000 |     0.682 |       0.647 |      0.035 |       NA    | Unspecified | NA         |
 | Vccpaux   |       1.800 |     0.036 |       0.026 |      0.010 |       NA    | Unspecified | NA         |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |       NA    | Unspecified | NA         |
 | Vcco_ddr  |       1.500 |     0.354 |       0.352 |      0.002 |       NA    | Unspecified | NA         |
@@ -151,16 +151,16 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| rsa_soc_wrapper          |     1.325 |
-|   rsa_soc_i              |     1.325 |
-|     axi_smc              |     0.012 |
-|       inst               |     0.012 |
-|     processing_system7_0 |     1.257 |
-|       inst               |     1.257 |
-|     ps7_0_axi_periph     |     0.002 |
+| rsa_soc_wrapper          |     1.930 |
+|   rsa_soc_i              |     1.930 |
+|     axi_smc              |     0.013 |
+|       inst               |     0.013 |
+|     processing_system7_0 |     1.258 |
+|       inst               |     1.258 |
+|     ps7_0_axi_periph     |     0.003 |
 |       s00_couplers       |     0.002 |
-|     rsa                  |     0.052 |
-|       rsa_acc            |     0.048 |
+|     rsa                  |     0.656 |
+|       rsa_acc            |     0.651 |
 |       rsa_dma            |     0.005 |
 +--------------------------+-----------+
 
